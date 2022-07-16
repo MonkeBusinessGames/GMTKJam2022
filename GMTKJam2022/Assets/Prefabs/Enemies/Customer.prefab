@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 3945451954728520759}
   - component: {fileID: 3945451954728520757}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Customer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   sRend: {fileID: 3945451954728520745}
   healthBar: {fileID: 386822285379470907}
   enemyCanvas: {fileID: 8061447222688262824}
-  health: 6
+  health: 5
   speed: 1
   recoverTime: 0.5
   attackRange: {fileID: 3945451956097383903}
