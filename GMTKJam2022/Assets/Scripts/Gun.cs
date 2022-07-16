@@ -5,13 +5,13 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [Header("Gun Variables")]
-    [SerializeField] private float fireRate;
+    [SerializeField] public float fireRate;
     [SerializeField] private float fireSpread;
 
     [Header("Assignments")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
-    private float bulletTimer;
+    public float bulletTimer;
 
 
     public void Shoot()
@@ -20,9 +20,7 @@ public class Gun : MonoBehaviour
         if (bulletTimer <= 0)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            bulletTimer = fireRate;
         }
-        bulletTimer -= Time.deltaTime;
         firePoint.localRotation = Quaternion.identity;
     }
 }

@@ -7,19 +7,32 @@ public class PlayerController : MonoBehaviour
     [Range(1f, 10.0f)]
     [SerializeField] private float speed = 5f;
     [SerializeField] private float health = 10f;
-    [SerializeField] private Gun gun;
+    [SerializeField] private Gun[] guns;
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private Camera cam;
     [SerializeField] private GameController gameController;
     private Vector2 mousePosition;
+    [SerializeField] private int gunIndex;
+    public float bulletTimer;
 
     private void Update()
     {
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
-        if (Input.GetMouseButton(0))
-            gun.Shoot();
-        else if (Input.GetMouseButtonDown(0))
-            gun.Shoot();
+        bulletTimer -= Time.deltaTime;
+        if (Input.GetMouseButton(0) && bulletTimer < 0)
+        {
+            guns[gunIndex].Shoot();
+            bulletTimer = guns[gunIndex].fireRate;
+        }
+        else if (Input.GetMouseButtonDown(0) && bulletTimer < 0)
+        {
+            guns[gunIndex].Shoot();
+            bulletTimer = guns[gunIndex].fireRate;
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gunIndex = Random.Range(0, guns.Length);
+        }
     }
 
     void FixedUpdate()
