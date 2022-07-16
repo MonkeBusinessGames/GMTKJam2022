@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Slider healthBar;
+    [SerializeField] private TMP_Text score;
     [SerializeField] private TMP_Text currentMode;
     [SerializeField] private TMP_Text backupMode;
     private bool paused = false;
@@ -52,6 +53,11 @@ public class GameController : MonoBehaviour
     public void UpdateHealth(float damageDealt)
     {
         healthBar.value -= damageDealt;
+    }
+
+    public void UpdateScore(float money)
+    {
+        score.text = "$" + money.ToString();
     }
 
     public void modeUpdate(string current, string backup)
