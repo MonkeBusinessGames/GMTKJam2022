@@ -9,12 +9,23 @@ public class GameController : MonoBehaviour
 {
     public static int enemyCount = 0;
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject gameOverMenuHighScore;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Slider healthBar;
     [SerializeField] private TMP_Text score;
+    [SerializeField] private TMP_Text finalScore;
+    [SerializeField] private TMP_Text newHighScore;
+    [SerializeField] private TMP_Text oldHighScore;
     [SerializeField] private TMP_Text currentMode;
     [SerializeField] private TMP_Text backupMode;
     private bool paused = false;
+    private SaveData data;
+    private bool newBest = false;
+
+    private void Start()
+    {
+        data = SaveSystem.Load();
+    }
 
     private void Update()
     {
@@ -28,7 +39,16 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 0;
+        if (newBest)
+        {
+            SaveSystem.Save(data);
+            gameOverMenuHighScore.SetActive(true);
+            newHighScore.text = score.text;
+            return;
+        }
         gameOverMenu.SetActive(true);
+        finalScore.text = score.text;
+        oldHighScore.text = "Best: $" + data.highScore.ToString();
     }
     public void TogglePause()
     {
@@ -58,6 +78,11 @@ public class GameController : MonoBehaviour
     public void UpdateScore(float money)
     {
         score.text = "$" + money.ToString();
+        if (money > data.highScore)
+        {
+            data.highScore = money;
+            newBest = true;
+        }
     }
 
     public void modeUpdate(string current, string backup)
