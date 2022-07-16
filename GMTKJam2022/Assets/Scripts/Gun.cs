@@ -7,10 +7,11 @@ public class Gun : MonoBehaviour
     [Header("Gun Variables")]
     [SerializeField] public float fireRate;
     [SerializeField] private float fireSpread;
-
+    [SerializeField] private float gunRecoil;
     [Header("Assignments")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform parent;
     [Header("Special Weapons")]
     [SerializeField] private bool grenadeLauncher=false;
     public float bulletTimer;
@@ -18,6 +19,8 @@ public class Gun : MonoBehaviour
 
     public void Shoot()
     {
+        Vector3 moveDirection = parent.position - firePoint.position;
+        parent.GetComponent<Rigidbody2D>().AddForce(moveDirection.normalized * gunRecoil);
         firePoint.localRotation = Quaternion.Euler(0, 0, firePoint.localRotation.z + Random.Range(-fireSpread, fireSpread)); 
         if (bulletTimer <= 0)
         {

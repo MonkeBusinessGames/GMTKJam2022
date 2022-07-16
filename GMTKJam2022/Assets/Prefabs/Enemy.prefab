@@ -144,7 +144,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -375,5 +375,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 1
   fireSpread: 2
+  gunRecoil: 100
   bulletPrefab: {fileID: 5832668824721211837, guid: 8f59bf31ad93b354c82baba7a7fc62e3, type: 3}
   firePoint: {fileID: 530958085932524496}
+  parent: {fileID: 3945451954728520758}
+  grenadeLauncher: 0
+  bulletTimer: 0
