@@ -94,4 +94,9 @@ public class GameController : MonoBehaviour
     {
         currentMode.text = current;
     }
+    public void MenuScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
+    }
 }
