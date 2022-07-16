@@ -13,21 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameController gameController;
     private Vector2 mousePosition;
 
-    [Header("Gun Fields")]
-    [SerializeField] private float fireRate;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firePoint;
-    private float bulletTimer;
-
-
-
     private void Update()
     {
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
-        if (Input.GetMouseButton(0))
-            Shoot();
-        else if (Input.GetMouseButtonUp(0))
-            bulletTimer = 0;
     }
 
     void FixedUpdate()
@@ -39,16 +27,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 getInput()
     {
         return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-    }
-
-    private void Shoot()
-    {
-        if(bulletTimer <= 0)
-        {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            bulletTimer = fireRate;
-        }
-        bulletTimer -= Time.deltaTime;
     }
 
     public void Damaged(int damage)
