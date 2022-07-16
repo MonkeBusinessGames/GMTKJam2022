@@ -11,6 +11,8 @@ public class Gun : MonoBehaviour
     [Header("Assignments")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
+    [Header("Special Weapons")]
+    [SerializeField] private bool grenadeLauncher=false;
     public float bulletTimer;
 
 
@@ -19,7 +21,14 @@ public class Gun : MonoBehaviour
         firePoint.localRotation = Quaternion.Euler(0, 0, firePoint.localRotation.z + Random.Range(-fireSpread, fireSpread)); 
         if (bulletTimer <= 0)
         {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            if (grenadeLauncher)
+            {
+                Instantiate(bulletPrefab, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0), Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            }
         }
         firePoint.localRotation = Quaternion.identity;
     }
