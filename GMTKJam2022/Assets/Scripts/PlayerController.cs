@@ -6,14 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     [Range(1f, 10.0f)]
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float health = 10f;
 
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private Camera cam;
+    [SerializeField] private GameController gameController;
     private Vector2 mousePosition;
 
     [Header("Gun Fields")]
     [SerializeField] private float fireRate;
-    [SerializeField] private float bulletSpeed;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
     private float bulletTimer;
@@ -48,5 +49,12 @@ public class PlayerController : MonoBehaviour
             bulletTimer = fireRate;
         }
         bulletTimer -= Time.deltaTime;
+    }
+
+    public void Damaged(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+            gameController.GameOver();
     }
 }

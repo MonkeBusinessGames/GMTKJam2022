@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     private EnemyState state;
     private static BoxCollider2D player;
+    [SerializeField] private Rigidbody2D rb;
 
     [Header("Stats")]
     [SerializeField] private int health;
@@ -15,12 +16,19 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private CircleCollider2D attackRange;
     [SerializeField] private CircleCollider2D retreatRange;
 
+    [Header("Gun Fields")]
+    [SerializeField] private float fireRate;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
+    private float bulletTimer;
+
     private float chaseTimer = .5f;
     private float retreatTimer = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameController.enemyCount++;
         player = FindObjectOfType<PlayerController>().GetComponent<BoxCollider2D>();
         state = EnemyState.Chasing;
     }
@@ -57,6 +65,7 @@ public class EnemyController : MonoBehaviour
                     retreatTimer = 1;
                     break;
                 }
+                Shoot();
                 break;
             case EnemyState.Retreating:
                 //If the player is too close, keep retreating
@@ -84,18 +93,49 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Vector2 lookDir = (Vector2)player.transform.position - rb.position;
+
         switch (state)
         {
             //Move toward player
             case EnemyState.Chasing:
+                lookDir = (Vector2) player.transform.position - rb.position;
+                rb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
                 transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.fixedDeltaTime);
+                break;
+
+            case EnemyState.Shooting:
+                lookDir = (Vector2)player.transform.position - rb.position;
+                rb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
                 break;
 
             //Move away from player
             case EnemyState.Retreating:
+                lookDir = (Vector2)player.transform.position - rb.position;
+                rb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 90f;
                 transform.position = Vector2.MoveTowards(transform.position, player.transform.position, -speed * Time.fixedDeltaTime);
                 break;
 
+        }
+    }
+
+    private void Shoot()
+    {
+        if (bulletTimer <= 0)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bulletTimer = fireRate;
+        }
+        bulletTimer -= Time.deltaTime;
+    }
+
+    public void Damaged(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            GameController.enemyCount--;
+            Destroy(gameObject);
         }
     }
 }
