@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,11 +16,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int gunIndex;
     [SerializeField] private int secondaryGunIndex;
     public float bulletTimer;
+    [SerializeField] private TextMeshProUGUI moneyText;
 
     public int money;
 
     private void Update()
     {
+        moneyText.text = "Money: " + money;
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         bulletTimer -= Time.deltaTime;
         if (Input.GetMouseButton(0) && bulletTimer < 0)
