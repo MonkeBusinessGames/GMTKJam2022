@@ -5068,8 +5068,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
-    - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
+    - {fileID: 3945451954728520744, guid: b80b9f8a4b4d7a947838d456ccd15268, type: 3}
+    - {fileID: 3945451954728520744, guid: b80b9f8a4b4d7a947838d456ccd15268, type: 3}
     - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
     points:
     - {fileID: 1844225876}
@@ -5085,6 +5085,7 @@ MonoBehaviour:
     - {fileID: 207604447}
   boundaries: {x: 10, y: 10}
   waveDelay: 2
+  spawnDelay: 2
 --- !u!4 &1841223462
 Transform:
   m_ObjectHideFlags: 0
