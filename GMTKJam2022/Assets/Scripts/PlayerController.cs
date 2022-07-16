@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameController gameController;
     private Vector2 mousePosition;
     [SerializeField] private int gunIndex;
+    [SerializeField] private int secondaryGunIndex;
     public float bulletTimer;
 
     private void Update()
@@ -31,7 +32,15 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            gunIndex = Random.Range(0, guns.Length);
+            int oldindex = gunIndex;
+            while(gunIndex == oldindex)
+                gunIndex = Random.Range(0, guns.Length);
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            int oldindex = gunIndex;
+            gunIndex = secondaryGunIndex;
+            secondaryGunIndex = oldindex;
         }
     }
 
