@@ -12,18 +12,9 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
     private float bulletTimer;
-    private Vector2 mousePosition;
 
-    void Update()
-    {
-        if (Input.GetMouseButton(0))
-            Shoot();
-        else if (Input.GetMouseButtonDown(0))
-            Shoot();
-    }
 
-    // Update is called once per frame
-    private void Shoot()
+    public void Shoot()
     {
         firePoint.localRotation = Quaternion.Euler(0, 0, firePoint.localRotation.z + Random.Range(-fireSpread, fireSpread)); 
         if (bulletTimer <= 0)

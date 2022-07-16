@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   health: 10
+  gun: {fileID: 602534289}
   playerRb: {fileID: 73195532}
   cam: {fileID: 519420031}
   gameController: {fileID: 221496226}

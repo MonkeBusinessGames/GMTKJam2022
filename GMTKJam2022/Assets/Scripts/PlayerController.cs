@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [Range(1f, 10.0f)]
     [SerializeField] private float speed = 5f;
     [SerializeField] private float health = 10f;
-
+    [SerializeField] private Gun gun;
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private Camera cam;
     [SerializeField] private GameController gameController;
@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButton(0))
+            gun.Shoot();
+        else if (Input.GetMouseButtonDown(0))
+            gun.Shoot();
     }
 
     void FixedUpdate()
