@@ -13,13 +13,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameController gameController;
     private Vector2 mousePosition;
     [SerializeField] private int gunIndex;
+    [SerializeField] private int lowestRandomTime;
+    [SerializeField] private int highestRandomTime;
     [SerializeField] private int secondaryGunIndex;
     public float bulletTimer;
 
+
     public int money;
+    private float gunChangeRandom;
 
     private void Start()
     {
+        gunChangeRandom = Random.Range(lowestRandomTime, highestRandomTime);
         //Start with random gun
         int oldindex = gunIndex;
         while (gunIndex == oldindex)
@@ -29,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        gunChangeRandom -= Time.deltaTime;
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         bulletTimer -= Time.deltaTime;
         if (Input.GetMouseButton(0) && bulletTimer < 0)
@@ -41,8 +47,9 @@ public class PlayerController : MonoBehaviour
             guns[gunIndex].Shoot();
             bulletTimer = guns[gunIndex].fireRate;
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (gunChangeRandom<=0)
         {
+            gunChangeRandom = Random.Range(lowestRandomTime, highestRandomTime);
             int oldindex = gunIndex;
             while(gunIndex == oldindex)
                 gunIndex = Random.Range(0, guns.Length);
@@ -75,7 +82,7 @@ public class PlayerController : MonoBehaviour
         if (health <= 0)
             gameController.GameOver();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
