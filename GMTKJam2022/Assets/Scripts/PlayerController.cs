@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int secondaryGunIndex;
     public float bulletTimer;
 
+    public int money;
+
     private void Start()
     {
         //Start with random gun
@@ -72,5 +74,13 @@ public class PlayerController : MonoBehaviour
         gameController.UpdateHealth(damage);
         if (health <= 0)
             gameController.GameOver();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+            money++;
+        }
     }
 }
