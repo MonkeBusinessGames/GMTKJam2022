@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3945451954728520759}
   - component: {fileID: 3945451954728520757}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Security Drone
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,11 +101,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3945451954728520757}
-  health: 6
-  speed: 1
+  health: 5
+  speed: 3
   attackRange: {fileID: 3945451956097383903}
   retreatRange: {fileID: 3945451955013597966}
   gun: {fileID: 6799134447209308865}
+  money: {fileID: 5305824317166724243, guid: c0fe3a5c55ff84d4fae2e7be0fce837d, type: 3}
+  moneyAmount: 3
+  moneyDropRadius: 1
 --- !u!61 &3945451954728520759
 BoxCollider2D:
   m_ObjectHideFlags: 0
