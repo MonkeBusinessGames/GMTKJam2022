@@ -398,12 +398,14 @@ MonoBehaviour:
   - {fileID: 623373031}
   - {fileID: 970608962}
   playerRb: {fileID: 73195532}
+  sRend: {fileID: 73195529}
   cam: {fileID: 519420031}
   gameController: {fileID: 1157069530}
   gunIndex: 1
   lowestRandomTime: 5
-  highestRandomTime: 15
-  secondaryGunIndex: 1
+  highestRandomTime: 20
+  secondaryGunIndex: 0
+  recoverTime: 0.5
   bulletTimer: 0
   money: 0
 --- !u!50 &73195532

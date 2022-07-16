@@ -9,14 +9,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float health = 10f;
     [SerializeField] private Gun[] guns;
     [SerializeField] private Rigidbody2D playerRb;
+    [SerializeField] private SpriteRenderer sRend;
     [SerializeField] private Camera cam;
     [SerializeField] private GameController gameController;
     private Vector2 mousePosition;
     [SerializeField] private int gunIndex;
-    [SerializeField] private int lowestRandomTime;
-    [SerializeField] private int highestRandomTime;
+    [SerializeField] private int lowestRandomTime = 5;
+    [SerializeField] private int highestRandomTime = 20;
     [SerializeField] private int secondaryGunIndex;
+    [SerializeField] private float recoverTime = .5f;
     public float bulletTimer;
+    private bool damaged;
 
 
     public int money;
@@ -55,7 +58,7 @@ public class PlayerController : MonoBehaviour
                 gunIndex = Random.Range(0, guns.Length);
             gameController.modeUpdate(guns[gunIndex].modeName);
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetMouseButtonDown(1))
         {
             int oldindex = gunIndex;
             gunIndex = secondaryGunIndex;
@@ -66,6 +69,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (damaged)
+            return;
         playerRb.velocity = new Vector2(getInput().x * speed, getInput().y * speed);
         Vector2 lookDir = mousePosition - playerRb.position;
         playerRb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
@@ -77,10 +82,17 @@ public class PlayerController : MonoBehaviour
 
     public void Damaged(int damage)
     {
+        if (damaged)
+            return;
+        damaged = true;
+        playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
         health -= damage;
         gameController.UpdateHealth(damage);
         if (health <= 0)
             gameController.GameOver();
+
+        StartCoroutine(DamageWait());
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -90,5 +102,18 @@ public class PlayerController : MonoBehaviour
             money++;
             gameController.UpdateScore(money);
         }
+    }
+
+    IEnumerator DamageWait()
+    {
+        sRend.color = new Color(0, 0, 1, .5f);
+
+        print("damaged");
+        yield return new WaitForSeconds(recoverTime);
+
+        sRend.color = Color.blue;
+        print("recovered");
+        damaged = false;
+        playerRb.constraints = RigidbodyConstraints2D.None;
     }
 }
