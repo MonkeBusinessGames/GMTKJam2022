@@ -20,6 +20,15 @@ public class PlayerController : MonoBehaviour
 
     public int money;
 
+    private void Start()
+    {
+        //Start with random gun
+        int oldindex = gunIndex;
+        while (gunIndex == oldindex)
+            gunIndex = Random.Range(0, guns.Length);
+        gameController.modeUpdate(guns[gunIndex].modeName);
+    }
+
     private void Update()
     {
         moneyText.text = "Money: " + money;
@@ -40,12 +49,14 @@ public class PlayerController : MonoBehaviour
             int oldindex = gunIndex;
             while(gunIndex == oldindex)
                 gunIndex = Random.Range(0, guns.Length);
+            gameController.modeUpdate(guns[gunIndex].modeName);
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
             int oldindex = gunIndex;
             gunIndex = secondaryGunIndex;
             secondaryGunIndex = oldindex;
+            gameController.modeUpdate(guns[gunIndex].modeName, guns[secondaryGunIndex].modeName);
         }
     }
 
@@ -63,6 +74,7 @@ public class PlayerController : MonoBehaviour
     public void Damaged(int damage)
     {
         health -= damage;
+        gameController.UpdateHealth(damage);
         if (health <= 0)
             gameController.GameOver();
     }
@@ -72,6 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             money++;
+            gameController.UpdateScore(money);
         }
     }
 }
