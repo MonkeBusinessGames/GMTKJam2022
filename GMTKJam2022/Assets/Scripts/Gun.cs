@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour
     [Header("Gun Variables")]
     [SerializeField] public float fireRate;
     [SerializeField] private float fireSpread;
+    public string modeName;
 
     [Header("Assignments")]
     [SerializeField] private GameObject bulletPrefab;
