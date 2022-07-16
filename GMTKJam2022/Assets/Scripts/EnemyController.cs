@@ -16,11 +16,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private CircleCollider2D attackRange;
     [SerializeField] private CircleCollider2D retreatRange;
 
-    [Header("Gun Fields")]
+    [SerializeField] private Gun gun;
+    private float bulletTimer;
+    /*[Header("Gun Fields")]
     [SerializeField] private float fireRate;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
-    private float bulletTimer;
+    private float bulletTimer*/
+
 
     private float chaseTimer = .5f;
     private float retreatTimer = 1f;
@@ -36,6 +39,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bulletTimer -= Time.deltaTime;
         switch (state)
         {
             case EnemyState.Chasing:
@@ -65,7 +69,12 @@ public class EnemyController : MonoBehaviour
                     retreatTimer = 1;
                     break;
                 }
-                Shoot();
+                if (bulletTimer < 0)
+                {
+                    gun.Shoot();
+                    bulletTimer = gun.fireRate;
+                }
+
                 break;
             case EnemyState.Retreating:
                 //If the player is too close, keep retreating
@@ -117,16 +126,6 @@ public class EnemyController : MonoBehaviour
                 break;
 
         }
-    }
-
-    private void Shoot()
-    {
-        if (bulletTimer <= 0)
-        {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            bulletTimer = fireRate;
-        }
-        bulletTimer -= Time.deltaTime;
     }
 
     public void Damaged(int damage)
