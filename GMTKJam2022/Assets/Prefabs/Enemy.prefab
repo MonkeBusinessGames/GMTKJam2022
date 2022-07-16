@@ -106,6 +106,9 @@ MonoBehaviour:
   attackRange: {fileID: 3945451956097383903}
   retreatRange: {fileID: 3945451955013597966}
   gun: {fileID: 6799134447209308865}
+  money: {fileID: 5305824317166724243, guid: c0fe3a5c55ff84d4fae2e7be0fce837d, type: 3}
+  moneyAmount: 3
+  moneyDropRadius: 1
 --- !u!61 &3945451954728520759
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -144,7 +147,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -375,5 +378,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 1
   fireSpread: 2
+  gunRecoil: 100
   bulletPrefab: {fileID: 5832668824721211837, guid: 8f59bf31ad93b354c82baba7a7fc62e3, type: 3}
   firePoint: {fileID: 530958085932524496}
+  parent: {fileID: 3945451954728520758}
+  grenadeLauncher: 0
+  bulletTimer: 0

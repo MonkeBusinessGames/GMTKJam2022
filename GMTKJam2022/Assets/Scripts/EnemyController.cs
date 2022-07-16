@@ -18,6 +18,10 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private Gun gun;
     private float bulletTimer;
+
+    [SerializeField] private GameObject money;
+    [SerializeField] private float moneyAmount;
+    [SerializeField] private float moneyDropRadius;
     /*[Header("Gun Fields")]
     [SerializeField] private float fireRate;
     [SerializeField] private GameObject bulletPrefab;
@@ -134,6 +138,10 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             GameController.enemyCount--;
+            for(int i=0; i< moneyAmount; i++)
+            {
+                Instantiate(money, new Vector3(transform.position.x + Random.Range(-moneyDropRadius, moneyDropRadius), transform.position.y + Random.Range(-moneyDropRadius, moneyDropRadius), 0), Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }

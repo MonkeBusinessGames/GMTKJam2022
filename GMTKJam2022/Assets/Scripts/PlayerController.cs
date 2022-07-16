@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int secondaryGunIndex;
     public float bulletTimer;
 
+    public int money;
+
     private void Update()
     {
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -60,5 +62,13 @@ public class PlayerController : MonoBehaviour
         health -= damage;
         if (health <= 0)
             gameController.GameOver();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+            money++;
+        }
     }
 }
