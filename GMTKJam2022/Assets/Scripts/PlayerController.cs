@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
             while(gunIndex == oldindex)
                 gunIndex = Random.Range(0, guns.Length);
             gameController.modeUpdate(guns[gunIndex].modeName);
+            StartCoroutine(gameController.ShowSwitchVisual());
         }
         if (Input.GetMouseButtonDown(1))
         {
