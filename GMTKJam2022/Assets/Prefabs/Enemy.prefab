@@ -106,6 +106,9 @@ MonoBehaviour:
   attackRange: {fileID: 3945451956097383903}
   retreatRange: {fileID: 3945451955013597966}
   gun: {fileID: 6799134447209308865}
+  money: {fileID: 5305824317166724243, guid: c0fe3a5c55ff84d4fae2e7be0fce837d, type: 3}
+  moneyAmount: 3
+  moneyDropRadius: 1
 --- !u!61 &3945451954728520759
 BoxCollider2D:
   m_ObjectHideFlags: 0
