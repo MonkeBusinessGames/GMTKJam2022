@@ -22,7 +22,7 @@ public class Gun : MonoBehaviour
     public void Shoot()
     {
         Vector3 moveDirection = parent.position - firePoint.position;
-        parent.GetComponent<Rigidbody2D>().AddForce(moveDirection.normalized * gunRecoil);
+        parent.GetComponent<Rigidbody2D>().AddForce(moveDirection.normalized * -gunRecoil);
         firePoint.localRotation = Quaternion.Euler(0, 0, firePoint.localRotation.z + Random.Range(-fireSpread, fireSpread)); 
         if (bulletTimer <= 0)
         {
