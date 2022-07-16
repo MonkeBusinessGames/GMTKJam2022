@@ -1979,7 +1979,7 @@ MonoBehaviour:
     - {fileID: 3945451954728520744, guid: ec8bd21589fe41643b5714dde494e9cd, type: 3}
     - {fileID: 3945451954728520744, guid: ec8bd21589fe41643b5714dde494e9cd, type: 3}
     - {fileID: 3945451954728520744, guid: ec8bd21589fe41643b5714dde494e9cd, type: 3}
-  boundaries: {x: 10, y: 10}
+  boundaries: {x: 25, y: 25}
   waveDelay: 2
 --- !u!4 &1841223462
 Transform:
