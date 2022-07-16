@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 1
   fireSpread: 0
-  gunRecoil: -1000
+  gunRecoil: 1000
   modeName: Shotgun
   bulletPrefab: {fileID: 5832668824721211837, guid: 461c716686109b94494fe74da090e367, type: 3}
   firePoint: {fileID: 1421817367}
@@ -1494,7 +1494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.5
   fireSpread: 0
-  gunRecoil: -1000
+  gunRecoil: 1000
   modeName: Pistol
   bulletPrefab: {fileID: 5832668824721211837, guid: 1de004a848870104ea67537821a94f58, type: 3}
   firePoint: {fileID: 1708581122}
@@ -1629,7 +1629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.05
   fireSpread: 10
-  gunRecoil: -1000
+  gunRecoil: 1000
   modeName: Machine Gun
   bulletPrefab: {fileID: 5832668824721211837, guid: ab2250d6e29a65248a47eb7f63ac3dfd, type: 3}
   firePoint: {fileID: 930643001}
@@ -1682,7 +1682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.1
   fireSpread: 1
-  gunRecoil: -1000
+  gunRecoil: 1000
   modeName: Assault Rifle
   bulletPrefab: {fileID: 5832668824721211837, guid: 54efc2d37ac1e9a4898feac99585942b, type: 3}
   firePoint: {fileID: 122740498}
@@ -2367,7 +2367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 1
   fireSpread: 0
-  gunRecoil: -1000
+  gunRecoil: 1000
   modeName: Grednade
   bulletPrefab: {fileID: 5832668824721211837, guid: 82f0ac9437a08d54eba2d98d6501416f, type: 3}
   firePoint: {fileID: 569062639}
@@ -3891,7 +3891,7 @@ MonoBehaviour:
     - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
     - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
     - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
-  boundaries: {x: 10, y: 10}
+  boundaries: {x: 20, y: 15}
   waveDelay: 2
 --- !u!4 &1841223462
 Transform:
@@ -4088,7 +4088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 1
   fireSpread: 0
-  gunRecoil: -1000
+  gunRecoil: 1000
   modeName: Sniper
   bulletPrefab: {fileID: 5832668824721211837, guid: 3a31b52b1e838ea4f8d1e59aa73c6482, type: 3}
   firePoint: {fileID: 769570238}
