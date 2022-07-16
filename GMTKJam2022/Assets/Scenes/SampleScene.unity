@@ -1954,15 +1954,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemies:
+    - {fileID: 3945451954728520744, guid: d56c910d7dd341b4abfe3a2badb063c8, type: 3}
+    - {fileID: 3945451954728520744, guid: d56c910d7dd341b4abfe3a2badb063c8, type: 3}
+    - {fileID: 3945451954728520744, guid: d56c910d7dd341b4abfe3a2badb063c8, type: 3}
+    - {fileID: 3945451954728520744, guid: f7e9c945c65048947b98c1667e595f53, type: 3}
     - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
+  - enemies:
+    - {fileID: 3945451954728520744, guid: f7e9c945c65048947b98c1667e595f53, type: 3}
+    - {fileID: 3945451954728520744, guid: f7e9c945c65048947b98c1667e595f53, type: 3}
+    - {fileID: 3945451954728520744, guid: f7e9c945c65048947b98c1667e595f53, type: 3}
     - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
     - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
   - enemies:
     - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
+    - {fileID: 3945451954728520744, guid: f7e9c945c65048947b98c1667e595f53, type: 3}
+    - {fileID: 3945451954728520744, guid: ec8bd21589fe41643b5714dde494e9cd, type: 3}
     - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
+    - {fileID: 3945451954728520744, guid: f7e9c945c65048947b98c1667e595f53, type: 3}
+    - {fileID: 3945451954728520744, guid: ec8bd21589fe41643b5714dde494e9cd, type: 3}
+  - enemies:
     - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
-    - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
-    - {fileID: 3945451954728520744, guid: 23e8316ecc0a64943af0ca039aa63bc7, type: 3}
+    - {fileID: 3945451954728520744, guid: f7e9c945c65048947b98c1667e595f53, type: 3}
+    - {fileID: 3945451954728520744, guid: ec8bd21589fe41643b5714dde494e9cd, type: 3}
+    - {fileID: 3945451954728520744, guid: ec8bd21589fe41643b5714dde494e9cd, type: 3}
+    - {fileID: 3945451954728520744, guid: ec8bd21589fe41643b5714dde494e9cd, type: 3}
+    - {fileID: 3945451954728520744, guid: ec8bd21589fe41643b5714dde494e9cd, type: 3}
   boundaries: {x: 10, y: 10}
   waveDelay: 2
 --- !u!4 &1841223462
