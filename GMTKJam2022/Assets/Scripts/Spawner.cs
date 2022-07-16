@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies.Length == 0 && !spawn)
+        if (enemies.Length == 0 && !spawn && currentWave < waves.Length)
         {
             StartCoroutine(Spawn());
         }
