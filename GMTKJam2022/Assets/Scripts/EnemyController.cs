@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
     private EnemyState state;
     private static BoxCollider2D player;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private Canvas enemyCanvas;
 
     [Header("Stats")]
     [SerializeField] private int health;
@@ -18,6 +21,10 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private Gun gun;
     private float bulletTimer;
+
+    [SerializeField] private GameObject money;
+    [SerializeField] private float moneyAmount;
+    [SerializeField] private float moneyDropRadius;
     /*[Header("Gun Fields")]
     [SerializeField] private float fireRate;
     [SerializeField] private GameObject bulletPrefab;
@@ -31,6 +38,8 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthBar.maxValue = healthBar.value = health;
+        
         GameController.enemyCount++;
         player = FindObjectOfType<PlayerController>().GetComponent<BoxCollider2D>();
         state = EnemyState.Chasing;
@@ -110,18 +119,21 @@ public class EnemyController : MonoBehaviour
             case EnemyState.Chasing:
                 lookDir = (Vector2) player.transform.position - rb.position;
                 rb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+                enemyCanvas.transform.rotation = Quaternion.identity;
                 transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.fixedDeltaTime);
                 break;
 
             case EnemyState.Shooting:
                 lookDir = (Vector2)player.transform.position - rb.position;
                 rb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+                enemyCanvas.transform.rotation = Quaternion.identity;
                 break;
 
             //Move away from player
             case EnemyState.Retreating:
                 lookDir = (Vector2)player.transform.position - rb.position;
                 rb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 90f;
+                enemyCanvas.transform.rotation = Quaternion.identity;
                 transform.position = Vector2.MoveTowards(transform.position, player.transform.position, -speed * Time.fixedDeltaTime);
                 break;
 
@@ -131,9 +143,14 @@ public class EnemyController : MonoBehaviour
     public void Damaged(int damage)
     {
         health -= damage;
+        healthBar.value = health;
         if (health <= 0)
         {
             GameController.enemyCount--;
+            for(int i=0; i< moneyAmount; i++)
+            {
+                Instantiate(money, new Vector3(transform.position.x + Random.Range(-moneyDropRadius, moneyDropRadius), transform.position.y + Random.Range(-moneyDropRadius, moneyDropRadius), 0), Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }
