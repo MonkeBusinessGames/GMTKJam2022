@@ -243,6 +243,7 @@ public class EnemyController : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         health -= damage;
         healthBar.value = health;
+        sRend.sprite = hitSprite;
         if (health <= 0)
         {
             playDeathSound();

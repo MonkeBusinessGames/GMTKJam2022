@@ -104,7 +104,8 @@ public class PlayerController : MonoBehaviour
             {
                 sRend.flipX = false;
                 gunRend.flipX = true;
-                firePoint.localPosition = new Vector2(1.9f, .6f);
+                gunRend.sortingOrder = 3;
+                firePoint.localPosition = new Vector2(8f, .6f);
                 sRend.sprite = upSprite;
                 transform.eulerAngles = Vector3.zero;
             }
@@ -112,7 +113,7 @@ public class PlayerController : MonoBehaviour
             else if ((lookDir.y * -1) > lookDir.x)
             {
                 gunRend.sortingOrder = 5;
-                firePoint.localPosition = new Vector2(1.9f, .6f);
+                firePoint.localPosition = new Vector2(8f, .6f);
                 sRend.flipX = gunRend.flipX = true;
                 sRend.sprite = sideSprite;
                 transform.eulerAngles = new Vector3(0, 0, -20);
@@ -121,7 +122,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 gunRend.sortingOrder = 5;
-                firePoint.localPosition = new Vector2(1.9f, .6f);
+                firePoint.localPosition = new Vector2(8f, .6f);
                 sRend.flipX = gunRend.flipX = true;
                 sRend.sprite = sideSprite;
                 transform.eulerAngles = Vector3.zero;
@@ -135,7 +136,7 @@ public class PlayerController : MonoBehaviour
             {
                 gunRend.sortingOrder = 3;
                 gunAngle = 180;
-                firePoint.localPosition = new Vector2(-2f, .6f);
+                firePoint.localPosition = new Vector2(-8f, .6f);
                 sRend.flipX = gunRend.flipX = false;
                 sRend.sprite = sideSprite;
                 transform.eulerAngles = new Vector3(0, 0, 20);
@@ -147,7 +148,7 @@ public class PlayerController : MonoBehaviour
                 gunRend.sortingOrder = 3;
                 gunAngle = 180;
                 sRend.flipX = gunRend.flipX = false;
-                firePoint.localPosition = new Vector2(-2f, .6f);
+                firePoint.localPosition = new Vector2(-8f, .6f);
                 sRend.sprite = upSprite;
                 transform.eulerAngles = Vector3.zero;
             }
@@ -156,7 +157,7 @@ public class PlayerController : MonoBehaviour
             {
                 gunRend.sortingOrder = 5;
                 gunAngle = 180;
-                firePoint.localPosition = new Vector2(-2f, .6f);
+                firePoint.localPosition = new Vector2(-8f, .6f);
                 sRend.flipX = gunRend.flipX = false;
                 sRend.sprite = sideSprite;
                 transform.eulerAngles = Vector3.zero;
