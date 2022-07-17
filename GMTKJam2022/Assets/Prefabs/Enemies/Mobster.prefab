@@ -198,6 +198,11 @@ MonoBehaviour:
   oldHighScore: {fileID: 0}
   currentMode: {fileID: 0}
   backupMode: {fileID: 0}
+  switchVisual: {fileID: 0}
+  credit: {fileID: 0}
+  creditHighscore: {fileID: 0}
+  reloadImages: {fileID: 0}
+  reloadAmount: 0
 --- !u!1 &3945451954728520744
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +260,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -273,9 +278,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 11418769
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -301,6 +306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3945451954728520757}
   sRend: {fileID: 3945451954728520745}
+  spriteObject: {fileID: 0}
+  deathSoundPlayer: {fileID: 0}
   healthBar: {fileID: 386822285379470907}
   enemyCanvas: {fileID: 8061447222688262824}
   health: 10
@@ -308,10 +315,12 @@ MonoBehaviour:
   recoverTime: 0.5
   attackRange: {fileID: 3945451956097383903}
   retreatRange: {fileID: 3945451955013597966}
-  gun: {fileID: 6799134447209308865}
+  deathFX: {fileID: 7801313152169415637, guid: 65eeb793f53c02842ab5801b1b82fdfd, type: 3}
+  gun: {fileID: 1343452632506050208}
   money: {fileID: 5305824317166724243, guid: c0fe3a5c55ff84d4fae2e7be0fce837d, type: 3}
   moneyAmount: 3
   moneyDropRadius: 1
+  deathSFX: []
 --- !u!61 &3945451954728520759
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -356,8 +365,8 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &3945451955013597952
 GameObject:
@@ -703,7 +712,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -744,7 +753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4435292606368597972}
-  - component: {fileID: 6799134447209308865}
+  - component: {fileID: 1343452632506050208}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -767,7 +776,7 @@ Transform:
   m_Father: {fileID: 3945451954728520758}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6799134447209308865
+--- !u!114 &1343452632506050208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -776,14 +785,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8871556199344819821}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f47f563b274884488f20455ad6a66db, type: 3}
+  m_Script: {fileID: 11500000, guid: 952c8050cff31604a847b1cd2e4aa2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 1
   fireSpread: 2
   gunRecoil: 100
+  gunShakeAmpl: 0
+  gunShakeDur: 0
   modeName: 
   bulletPrefab: {fileID: 5832668824721211837, guid: 8f59bf31ad93b354c82baba7a7fc62e3, type: 3}
+  recoilPoint: {fileID: 530958085932524496}
   firePoint: {fileID: 530958085932524496}
   parent: {fileID: 3945451954728520758}
   grenadeLauncher: 0
