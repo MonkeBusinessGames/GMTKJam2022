@@ -101,6 +101,8 @@ MonoBehaviour:
   timeToExplode: 1
   explosionRadius: 5
   explosion: {fileID: 6327283844754577764}
+  gunShakeAmpl: 10
+  gunShakeDur: 0.5
   damage: 50
   destination: {x: 0, y: 0}
 --- !u!58 &5832668824721211824
