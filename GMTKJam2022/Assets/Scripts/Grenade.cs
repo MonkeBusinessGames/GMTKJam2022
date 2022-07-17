@@ -8,6 +8,8 @@ public class Grenade : MonoBehaviour
     [SerializeField] private float timeToExplode;
     [SerializeField] private float explosionRadius;
     [SerializeField] private GameObject explosion;
+    [SerializeField] private float gunShakeAmpl;
+    [SerializeField] private float gunShakeDur;
     [SerializeField] private int damage;
     public Vector2 destination;
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class Grenade : MonoBehaviour
                 enemies[i].GetComponent<EnemyController>().Damaged(damage);
             }
         }
+        StartCoroutine(CinemachineShake.Instance.ShakeCam(gunShakeAmpl, gunShakeDur));
         yield return new WaitForSeconds(.5f);
         Destroy(gameObject);
     }

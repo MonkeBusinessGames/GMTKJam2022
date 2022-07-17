@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         gunChangeRandom -= Time.deltaTime;
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         bulletTimer -= Time.deltaTime;
@@ -99,6 +100,8 @@ public class PlayerController : MonoBehaviour
         if (damaged)
             return;
         damaged = true;
+        //Cinemachine Shake
+        StartCoroutine(CinemachineShake.Instance.ShakeCam(5f, .1f));
         sRend.sprite = hitSprite;
         playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
         health -= damage;
@@ -107,7 +110,6 @@ public class PlayerController : MonoBehaviour
             gameController.GameOver();
 
         StartCoroutine(DamageWait());
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
