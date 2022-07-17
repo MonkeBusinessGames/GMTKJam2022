@@ -189,8 +189,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 0}
+  gameOverMenuHighScore: {fileID: 0}
   pauseMenu: {fileID: 0}
   healthBar: {fileID: 386822285379470907}
+  score: {fileID: 0}
+  finalScore: {fileID: 0}
+  newHighScore: {fileID: 0}
+  oldHighScore: {fileID: 0}
   currentMode: {fileID: 0}
   backupMode: {fileID: 0}
 --- !u!1 &3945451954728520744
@@ -207,7 +212,7 @@ GameObject:
   - component: {fileID: 3945451954728520759}
   - component: {fileID: 3945451954728520757}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Customer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,10 +300,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3945451954728520757}
+  sRend: {fileID: 3945451954728520745}
   healthBar: {fileID: 386822285379470907}
   enemyCanvas: {fileID: 8061447222688262824}
-  health: 6
+  health: 5
   speed: 1
+  recoverTime: 0.5
   attackRange: {fileID: 3945451956097383903}
   retreatRange: {fileID: 3945451955013597966}
   gun: {fileID: 6799134447209308865}

@@ -8,12 +8,14 @@ public class EnemyController : MonoBehaviour
     private EnemyState state;
     private static BoxCollider2D player;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private SpriteRenderer sRend;
     [SerializeField] private Slider healthBar;
     [SerializeField] private Canvas enemyCanvas;
 
     [Header("Stats")]
     [SerializeField] private int health;
     [SerializeField] private float speed;
+    [SerializeField] private float recoverTime = .5f;
 
     [Header("Ranges")]
     [SerializeField] private CircleCollider2D attackRange;
@@ -21,6 +23,7 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private Gun gun;
     private float bulletTimer;
+    private bool damaged;
 
     [SerializeField] private GameObject money;
     [SerializeField] private float moneyAmount;
@@ -111,6 +114,10 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        if (damaged)
+            return;
+
         Vector2 lookDir = (Vector2)player.transform.position - rb.position;
 
         switch (state)
@@ -142,6 +149,10 @@ public class EnemyController : MonoBehaviour
 
     public void Damaged(int damage)
     {
+        if (damaged)
+            return;
+        damaged = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         health -= damage;
         healthBar.value = health;
         if (health <= 0)
@@ -153,6 +164,21 @@ public class EnemyController : MonoBehaviour
             }
             Destroy(gameObject);
         }
+
+        StartCoroutine(DamageWait());
+    }
+
+    IEnumerator DamageWait()
+    {
+        sRend.color = new Color(1, 0, 0, .5f);
+
+        print("damaged");
+        yield return new WaitForSeconds(recoverTime);
+
+        sRend.color = Color.red;
+        print("recovered");
+        damaged = false;
+        rb.constraints = RigidbodyConstraints2D.None;
     }
 }
 

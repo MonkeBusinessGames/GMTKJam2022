@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private TMP_Text oldHighScore;
     [SerializeField] private TMP_Text currentMode;
     [SerializeField] private TMP_Text backupMode;
+    [SerializeField] private GameObject switchVisual;
     private bool paused = false;
     private SaveData data;
     private bool newBest = false;
@@ -67,7 +68,7 @@ public class GameController : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void UpdateHealth(float damageDealt)
@@ -84,6 +85,12 @@ public class GameController : MonoBehaviour
             newBest = true;
         }
     }
+    public IEnumerator ShowSwitchVisual()
+    {
+        switchVisual.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        switchVisual.SetActive(false);
+    }
 
     public void modeUpdate(string current, string backup)
     {
@@ -93,5 +100,10 @@ public class GameController : MonoBehaviour
     public void modeUpdate(string current)
     {
         currentMode.text = current;
+    }
+    public void MenuScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
     }
 }

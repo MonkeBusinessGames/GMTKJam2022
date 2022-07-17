@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [System.Serializable]
 public class Wave
 {
     public GameObject[] enemies;
+    public Transform[] points;
 }
 
 public class Spawner : MonoBehaviour
 {
     public Wave[] waves;
     public Vector2 boundaries;
-    private float notSpawnBox=5f;
     int currentWave=0;
     public float waveDelay=2f;
+    public float spawnDelay = 2f;
     float waveTimer;
     bool spawn = false;
 
@@ -23,6 +25,7 @@ public class Spawner : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemies.Length == 0 && !spawn && currentWave < waves.Length)
         {
+            Debug.Log("spawn");
             StartCoroutine(Spawn());
         }
     }
@@ -30,23 +33,21 @@ public class Spawner : MonoBehaviour
     {
         spawn = true;
         yield return new WaitForSeconds(waveDelay);
-        foreach (GameObject enemy in waves[currentWave].enemies)
+        int e = waves[currentWave].enemies.Length-1;
+        while (e >= 0)
         {
-            Vector2 spawnPos= getSpawnPos(new Vector2(GameObject.FindGameObjectWithTag("Player").transform.position.x, GameObject.FindGameObjectWithTag("Player").transform.position.y));
-            Instantiate(enemy, spawnPos, Quaternion.identity);
+            for(int p=0; p< waves[currentWave].points.Length; p++)
+            {
+                Instantiate(waves[currentWave].enemies[e], waves[currentWave].points[p].position, Quaternion.identity);
+                e--;
+                if (e < 0)
+                {
+                    break;
+                }
+            }
+            yield return new WaitForSeconds(spawnDelay);
         }
-        yield return null;
-        spawn = false;
         currentWave += 1;
-    }
-
-    Vector2 getSpawnPos(Vector2 playerPos)
-    {
-        Vector2 spawn = playerPos;
-        while (spawn.x > playerPos.x - notSpawnBox && spawn.x < playerPos.x + notSpawnBox && spawn.y > playerPos.y - notSpawnBox && spawn.y < playerPos.y + notSpawnBox)
-        {
-            spawn = new Vector2(Random.Range(-boundaries.x, boundaries.x), Random.Range(-boundaries.y, boundaries.y));
-        }
-        return spawn;
+        spawn = false;
     }
 }

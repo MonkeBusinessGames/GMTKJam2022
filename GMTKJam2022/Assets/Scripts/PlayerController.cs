@@ -9,17 +9,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float health = 10f;
     [SerializeField] private Gun[] guns;
     [SerializeField] private Rigidbody2D playerRb;
+    [SerializeField] private SpriteRenderer sRend;
     [SerializeField] private Camera cam;
     [SerializeField] private GameController gameController;
     private Vector2 mousePosition;
     [SerializeField] private int gunIndex;
+    [SerializeField] private int lowestRandomTime = 5;
+    [SerializeField] private int highestRandomTime = 20;
     [SerializeField] private int secondaryGunIndex;
+    [SerializeField] private float recoverTime = .5f;
     public float bulletTimer;
+    private bool damaged;
+
 
     public int money;
+    private float gunChangeRandom;
 
     private void Start()
     {
+        gunChangeRandom = Random.Range(lowestRandomTime, highestRandomTime);
         //Start with random gun
         int oldindex = gunIndex;
         while (gunIndex == oldindex)
@@ -29,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        gunChangeRandom -= Time.deltaTime;
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         bulletTimer -= Time.deltaTime;
         if (Input.GetMouseButton(0) && bulletTimer < 0)
@@ -41,14 +50,16 @@ public class PlayerController : MonoBehaviour
             guns[gunIndex].Shoot();
             bulletTimer = guns[gunIndex].fireRate;
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (gunChangeRandom<=0)
         {
+            gunChangeRandom = Random.Range(lowestRandomTime, highestRandomTime);
             int oldindex = gunIndex;
             while(gunIndex == oldindex)
                 gunIndex = Random.Range(0, guns.Length);
             gameController.modeUpdate(guns[gunIndex].modeName);
+            StartCoroutine(gameController.ShowSwitchVisual());
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetMouseButtonDown(1))
         {
             int oldindex = gunIndex;
             gunIndex = secondaryGunIndex;
@@ -59,6 +70,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (damaged)
+            return;
         playerRb.velocity = new Vector2(getInput().x * speed, getInput().y * speed);
         Vector2 lookDir = mousePosition - playerRb.position;
         playerRb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
@@ -70,12 +83,19 @@ public class PlayerController : MonoBehaviour
 
     public void Damaged(int damage)
     {
+        if (damaged)
+            return;
+        damaged = true;
+        playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
         health -= damage;
         gameController.UpdateHealth(damage);
         if (health <= 0)
             gameController.GameOver();
+
+        StartCoroutine(DamageWait());
+
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
@@ -83,5 +103,18 @@ public class PlayerController : MonoBehaviour
             money++;
             gameController.UpdateScore(money);
         }
+    }
+
+    IEnumerator DamageWait()
+    {
+        sRend.color = new Color(0, 0, 1, .5f);
+
+        print("damaged");
+        yield return new WaitForSeconds(recoverTime);
+
+        sRend.color = Color.blue;
+        print("recovered");
+        damaged = false;
+        playerRb.constraints = RigidbodyConstraints2D.None;
     }
 }
