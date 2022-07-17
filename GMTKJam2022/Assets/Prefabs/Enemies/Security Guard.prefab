@@ -199,7 +199,10 @@ MonoBehaviour:
   currentMode: {fileID: 0}
   backupMode: {fileID: 0}
   switchVisual: {fileID: 0}
-  credits: {fileID: 0}
+  credit: {fileID: 0}
+  creditHighscore: {fileID: 0}
+  reloadUI: {fileID: 0}
+  reloadAmount: 0
 --- !u!1 &3945451954728520744
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +317,7 @@ MonoBehaviour:
   recoverTime: 0.5
   attackRange: {fileID: 3945451956097383903}
   retreatRange: {fileID: 3945451955013597966}
+  deathFX: {fileID: 7801313152169415637, guid: 65eeb793f53c02842ab5801b1b82fdfd, type: 3}
   gun: {fileID: 6799134447209308865}
   money: {fileID: 5305824317166724243, guid: c0fe3a5c55ff84d4fae2e7be0fce837d, type: 3}
   moneyAmount: 3
