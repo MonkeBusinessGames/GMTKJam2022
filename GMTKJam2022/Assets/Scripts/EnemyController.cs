@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour
     [Header("FX")]
     [SerializeField] private GameObject deathFX;
 
-    [SerializeField] private Gun gun;
+    [SerializeField] private EnemyGun gun;
     private float bulletTimer;
     private bool damaged;
 
