@@ -21,13 +21,14 @@ public class Gun : MonoBehaviour
     [Header("Special Weapons")]
     [SerializeField] private bool grenadeLauncher = false;
     [SerializeField] private bool shotgun = false;
+    public Transform gun;
     public float bulletTimer;
 
     public void Shoot()
     {
         Vector3 moveDirection = firePoint.position - recoilPoint.position;
         GetComponentInParent<Rigidbody2D>().AddForce(moveDirection.normalized * gunRecoil);
-        firePoint.localRotation = Quaternion.Euler(0, 0, firePoint.localRotation.z + Random.Range(-fireSpread, fireSpread));
+        gun.localRotation = Quaternion.Euler(0, 0, firePoint.localRotation.z + Random.Range(-fireSpread, fireSpread));
         if (gunRend.flipX)
             bulletRotation = Quaternion.Euler(new Vector3(0, 0, firePoint.eulerAngles.z + 180));
         else
