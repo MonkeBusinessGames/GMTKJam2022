@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c288a69ea46c2d498c6ac640079ba48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTag: 
-  playerTag: 
-  enemyString: 
+  bulletTag: bullet
+  playerTag: Player
+  enemyString: Enemy
   explosion: {fileID: 1810534012299922274, guid: 81e4a7e7f79641144a23b9135dca9a23, type: 3}
 --- !u!70 &3704484598064739319
 CapsuleCollider2D:

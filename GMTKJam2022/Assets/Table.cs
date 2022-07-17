@@ -12,7 +12,7 @@ public class Table : MonoBehaviour
     {
         if(other.CompareTag(bulletTag) || other.CompareTag(playerTag) || other.CompareTag(enemyString)){
             Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
