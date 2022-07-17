@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
+        gameController.reloadAmount = bulletTimer / guns[gunIndex].fireRate;
         gunChangeRandom -= Time.deltaTime;
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         bulletTimer -= Time.deltaTime;

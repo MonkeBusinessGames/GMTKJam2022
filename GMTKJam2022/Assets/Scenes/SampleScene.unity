@@ -2950,6 +2950,11 @@ MonoBehaviour:
   sfx_machineGunLoop: {fileID: 8300000, guid: fb0d1918807580e45b918c6d8657f504, type: 3}
   sfx_machineGunTail: {fileID: 8300000, guid: 6c833fdb984691d4090b7623e24f6d07, type: 3}
   sfx_pistol: []
+  sfx_shotgun:
+  - {fileID: 8300000, guid: b09c8e6068d112246859f2f0d53b4983, type: 3}
+  sfx_sniper:
+  - {fileID: 8300000, guid: 8d5f8eee3fd159547aad9a48a77d0c42, type: 3}
+  sfx_assaultRifle: []
   machineGunSoundIsPlaying: 0
 --- !u!4 &705848930
 Transform:
