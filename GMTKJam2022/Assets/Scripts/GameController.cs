@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private TMP_Text oldHighScore;
     [SerializeField] private TMP_Text currentMode;
     [SerializeField] private TMP_Text backupMode;
+    [SerializeField] private GameObject switchVisual;
     private bool paused = false;
     private SaveData data;
     private bool newBest = false;
@@ -83,6 +84,12 @@ public class GameController : MonoBehaviour
             data.highScore = money;
             newBest = true;
         }
+    }
+    public IEnumerator ShowSwitchVisual()
+    {
+        switchVisual.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        switchVisual.SetActive(false);
     }
 
     public void modeUpdate(string current, string backup)
