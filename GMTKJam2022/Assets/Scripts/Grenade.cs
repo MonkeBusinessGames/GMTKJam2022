@@ -7,7 +7,9 @@ public class Grenade : MonoBehaviour
 
     [SerializeField] private float timeToExplode;
     [SerializeField] private float explosionRadius;
+    [SerializeField] private GameObject explosion;
     [SerializeField] private int damage;
+    public Vector2 destination;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,13 @@ public class Grenade : MonoBehaviour
     // Update is called once per frame
     IEnumerator Explode()
     {
+        while((Vector2)transform.position != destination)
+        {
+            transform.position = Vector2.Lerp(transform.position, destination, .1f);
+            yield return null;
+        }
         yield return new WaitForSeconds(timeToExplode);
+        explosion.SetActive(true);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for(int i=0; i<enemies.Length; i++)
         {
@@ -26,6 +34,7 @@ public class Grenade : MonoBehaviour
                 enemies[i].GetComponent<EnemyController>().Damaged(damage);
             }
         }
+        yield return new WaitForSeconds(.5f);
         Destroy(gameObject);
     }
 }

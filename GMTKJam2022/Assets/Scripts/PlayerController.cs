@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Gun[] guns;
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private SpriteRenderer sRend;
+    [SerializeField] private Sprite idleSprite;
+    [SerializeField] private Sprite moveSprite;
+    [SerializeField] private Sprite hitSprite;
     [SerializeField] private Camera cam;
     [SerializeField] private GameController gameController;
     private Vector2 mousePosition;
@@ -43,13 +46,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0) && bulletTimer < 0)
         {
             guns[gunIndex].Shoot();
+            GunSoundManager.Instance.PlayGunSFX(gunIndex);
             bulletTimer = guns[gunIndex].fireRate;
         }
-        else if (Input.GetMouseButtonDown(0) && bulletTimer < 0)
+        if(!Input.GetMouseButton(0) && GunSoundManager.Instance.machineGunSoundIsPlaying)
+        {
+            GunSoundManager.Instance.PlayGunTail();
+        }
+        /*else if (Input.GetMouseButtonDown(0) && bulletTimer < 0)
         {
             guns[gunIndex].Shoot();
             bulletTimer = guns[gunIndex].fireRate;
-        }
+        }*/
         if (gunChangeRandom<=0)
         {
             gunChangeRandom = Random.Range(lowestRandomTime, highestRandomTime);
@@ -75,6 +83,11 @@ public class PlayerController : MonoBehaviour
         playerRb.velocity = new Vector2(getInput().x * speed, getInput().y * speed);
         Vector2 lookDir = mousePosition - playerRb.position;
         playerRb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        if (playerRb.velocity.magnitude > 0)
+            sRend.sprite = moveSprite;
+        else
+            sRend.sprite = idleSprite;
+
     }
     private Vector2 getInput()
     {
@@ -86,6 +99,7 @@ public class PlayerController : MonoBehaviour
         if (damaged)
             return;
         damaged = true;
+        sRend.sprite = hitSprite;
         playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
         health -= damage;
         gameController.UpdateHealth(damage);
@@ -107,12 +121,12 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DamageWait()
     {
-        sRend.color = new Color(0, 0, 1, .5f);
+        sRend.color = new Color(1, 1, 1, .9f);
 
         print("damaged");
         yield return new WaitForSeconds(recoverTime);
 
-        sRend.color = Color.blue;
+        sRend.color = Color.white;
         print("recovered");
         damaged = false;
         playerRb.constraints = RigidbodyConstraints2D.None;

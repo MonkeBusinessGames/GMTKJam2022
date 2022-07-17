@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+
+
+
     [Header("Gun Variables")]
     [SerializeField] public float fireRate;
     [SerializeField] private float fireSpread;
@@ -19,6 +22,8 @@ public class Gun : MonoBehaviour
     public float bulletTimer;
 
 
+    
+
     public void Shoot()
     {
         Vector3 moveDirection = parent.position - firePoint.position;
@@ -28,7 +33,8 @@ public class Gun : MonoBehaviour
         {
             if (grenadeLauncher)
             {
-                Instantiate(bulletPrefab, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0), Quaternion.identity);
+                Grenade grenade = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation).GetComponent<Grenade>();
+                grenade.destination = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
             }
             else
             {
@@ -37,4 +43,6 @@ public class Gun : MonoBehaviour
         }
         firePoint.localRotation = Quaternion.identity;
     }
+
+    
 }
