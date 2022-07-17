@@ -568,7 +568,9 @@ MonoBehaviour:
   sfx_pistol:
   - {fileID: 8300000, guid: 4315c1a673a10674c89baf8ac29f95c5, type: 3}
   - {fileID: 8300000, guid: 4ec82db127be9b14c915dad81e105582, type: 3}
-  sfx_sniper: []
+  sfx_sniper:
+  - {fileID: 8300000, guid: abb9a8491f31e234ab9f5a4bf7c3a7e6, type: 3}
+  - {fileID: 8300000, guid: abb9a8491f31e234ab9f5a4bf7c3a7e6, type: 3}
   sfx_assaultRifle:
   - {fileID: 8300000, guid: bd63a47ae42ff504783bf36c83ad2aa3, type: 3}
   - {fileID: 8300000, guid: 0f0aebd3c519fd54cb3c75f45144eb1b, type: 3}

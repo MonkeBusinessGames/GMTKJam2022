@@ -49,7 +49,7 @@ public class GunSoundManager : MonoBehaviour
                 }
                 break;
             case 1:
-                //playGunshot(sfx_sniper);
+                playGunshot(sfx_sniper);
                 break;
             case 2:
                 playGunshot(sfx_shotgun);
