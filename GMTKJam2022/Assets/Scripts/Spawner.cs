@@ -28,7 +28,6 @@ public class Spawner : MonoBehaviour
         {
             if(currentWave < waves.Length)
             {
-                StartCoroutine(gameController.NextWave());
                 StartCoroutine(Spawn());
             }
             else
