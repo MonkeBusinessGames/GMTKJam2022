@@ -46,13 +46,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0) && bulletTimer < 0)
         {
             guns[gunIndex].Shoot();
+            GunSoundManager.Instance.PlayGunSFX(gunIndex);
             bulletTimer = guns[gunIndex].fireRate;
         }
-        else if (Input.GetMouseButtonDown(0) && bulletTimer < 0)
+        if(!Input.GetMouseButton(0) && GunSoundManager.Instance.machineGunSoundIsPlaying)
+        {
+            GunSoundManager.Instance.PlayGunTail();
+        }
+        /*else if (Input.GetMouseButtonDown(0) && bulletTimer < 0)
         {
             guns[gunIndex].Shoot();
             bulletTimer = guns[gunIndex].fireRate;
-        }
+        }*/
         if (gunChangeRandom<=0)
         {
             gunChangeRandom = Random.Range(lowestRandomTime, highestRandomTime);
