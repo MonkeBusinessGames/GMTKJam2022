@@ -28,7 +28,8 @@ public class Gun : MonoBehaviour
         {
             if (grenadeLauncher)
             {
-                Instantiate(bulletPrefab, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0), Quaternion.identity);
+                Grenade grenade = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation).GetComponent<Grenade>();
+                grenade.destination = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
             }
             else
             {
