@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void UpdateHealth(float damageDealt)
