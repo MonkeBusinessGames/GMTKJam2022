@@ -199,6 +199,7 @@ MonoBehaviour:
   currentMode: {fileID: 0}
   backupMode: {fileID: 0}
   switchVisual: {fileID: 0}
+  credits: {fileID: 0}
 --- !u!1 &3945451954728520744
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,6 +788,7 @@ MonoBehaviour:
   gunShakeDur: 0
   modeName: 
   bulletPrefab: {fileID: 5832668824721211837, guid: 8f59bf31ad93b354c82baba7a7fc62e3, type: 3}
+  recoilPoint: {fileID: 530958085932524496}
   firePoint: {fileID: 530958085932524496}
   parent: {fileID: 3945451954728520758}
   grenadeLauncher: 0
