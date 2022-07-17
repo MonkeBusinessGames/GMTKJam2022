@@ -190,7 +190,6 @@ public class EnemyController : MonoBehaviour
             //Down and Right
             else if ((lookDir.y * -1) > lookDir.x)
             {
-                gunRend.sortingOrder = 5;
                 transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
                 sRend.sprite = sideSprite;
                 transform.eulerAngles = new Vector3(0, 0, -20);
@@ -198,7 +197,6 @@ public class EnemyController : MonoBehaviour
             //Only Right
             else
             {
-                gunRend.sortingOrder = 5;
                 transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
                 sRend.sprite = sideSprite;
                 transform.eulerAngles = Vector3.zero;
@@ -210,7 +208,6 @@ public class EnemyController : MonoBehaviour
             //Down and Left
             if (lookDir.y < lookDir.x)
             {
-                gunRend.sortingOrder = 3;
                 gunAngle = 180;
                 transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
                 sRend.sprite = sideSprite;
@@ -220,7 +217,6 @@ public class EnemyController : MonoBehaviour
             //Up and Left
             else if ((lookDir.y * -1) < lookDir.x)
             {
-                gunRend.sortingOrder = 3;
                 gunAngle = 180;
                 transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
                 sRend.sprite = upSprite;
@@ -229,7 +225,6 @@ public class EnemyController : MonoBehaviour
             //Only Left
             else
             {
-                gunRend.sortingOrder = 5;
                 gunAngle = 180;
                 transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
                 sRend.sprite = sideSprite;
