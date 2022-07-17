@@ -199,6 +199,7 @@ MonoBehaviour:
   currentMode: {fileID: 0}
   backupMode: {fileID: 0}
   switchVisual: {fileID: 0}
+  credits: {fileID: 0}
 --- !u!1 &3945451954728520744
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,8 +358,8 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &3945451955013597952
 GameObject:
@@ -783,8 +784,11 @@ MonoBehaviour:
   fireRate: 1
   fireSpread: 2
   gunRecoil: 100
+  gunShakeAmpl: 0
+  gunShakeDur: 0
   modeName: 
   bulletPrefab: {fileID: 5832668824721211837, guid: 8f59bf31ad93b354c82baba7a7fc62e3, type: 3}
+  recoilPoint: {fileID: 530958085932524496}
   firePoint: {fileID: 530958085932524496}
   parent: {fileID: 3945451954728520758}
   grenadeLauncher: 0

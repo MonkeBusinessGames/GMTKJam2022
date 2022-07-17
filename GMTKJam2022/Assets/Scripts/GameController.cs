@@ -19,17 +19,24 @@ public class GameController : MonoBehaviour
     [SerializeField] private TMP_Text currentMode;
     [SerializeField] private TMP_Text backupMode;
     [SerializeField] private GameObject switchVisual;
+    [SerializeField] private GameObject credit;
+    [SerializeField] private TMP_Text creditHighscore;
+    [SerializeField] private Image reloadUI;
+    [HideInInspector] public float reloadAmount;
+
     private bool paused = false;
     private SaveData data;
     private bool newBest = false;
 
-    private void Start()
+    private void Awake()
     {
         data = SaveSystem.Load();
     }
 
     private void Update()
     {
+        if (reloadAmount > 1) { reloadAmount = 1; }
+        reloadUI.fillAmount = 1-reloadAmount;
 /*        if (enemyCount <= 0)
             GameOver();*/
 
@@ -105,5 +112,10 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
+    }
+    public void RollCredits()
+    {
+        creditHighscore.text = "Best: $" + data.highScore.ToString();
+        credit.SetActive(true);
     }
 }
