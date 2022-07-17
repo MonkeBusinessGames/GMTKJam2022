@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject switchVisual;
     [SerializeField] private GameObject credit;
     [SerializeField] private TMP_Text creditHighscore;
+    [SerializeField] private GameObject newWave;
     public Image reloadImages;
     [HideInInspector] public float reloadAmount;
 
@@ -113,5 +114,11 @@ public class GameController : MonoBehaviour
     {
         creditHighscore.text = "Best: $" + data.highScore.ToString();
         credit.SetActive(true);
+    }
+    public IEnumerator NextWave()
+    {
+        newWave.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        newWave.SetActive(false);
     }
 }
