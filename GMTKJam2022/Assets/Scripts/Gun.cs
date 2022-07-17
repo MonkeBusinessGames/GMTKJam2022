@@ -10,12 +10,16 @@ public class Gun : MonoBehaviour
     [SerializeField] private float gunRecoil;
     [SerializeField] private float gunShakeAmpl;
     [SerializeField] private float gunShakeDur;
+    [SerializeField] private GameObject fx;
+
     public string modeName;
 
     [Header("Assignments")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform recoilPoint;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform fxPoint;
+
     [SerializeField] private Transform parent;
     [Header("Special Weapons")]
     [SerializeField] private bool grenadeLauncher = false;
@@ -37,6 +41,8 @@ public class Gun : MonoBehaviour
             else
             {
                 Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                if(fxPoint)
+                    Instantiate(fx, fxPoint.position, Quaternion.identity);
             }
         }
         firePoint.localRotation = Quaternion.identity;

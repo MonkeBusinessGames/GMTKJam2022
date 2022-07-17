@@ -242,10 +242,12 @@ MonoBehaviour:
   gunRecoil: -300
   gunShakeAmpl: 12
   gunShakeDur: 0.1
+  fx: {fileID: 4140127748954673820, guid: c7c0dd71ee5806441ab9afe48459f111, type: 3}
   modeName: Shotgun
   bulletPrefab: {fileID: 5832668824721211837, guid: 461c716686109b94494fe74da090e367, type: 3}
   recoilPoint: {fileID: 1633935722}
   firePoint: {fileID: 1421817367}
+  fxPoint: {fileID: 1123415994}
   parent: {fileID: 73195530}
   grenadeLauncher: 0
   bulletTimer: 0
@@ -577,8 +579,39 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 598748083}
   m_Father: {fileID: 623373030}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &136235899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 136235900}
+  m_Layer: 0
+  m_Name: FXPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &136235900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136235899}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1708581122}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &145679995
@@ -1584,11 +1617,11 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.46
   m_Points:
   - {x: 3.5783317, y: 0.5322318}
   - {x: 3.7628682, y: -0.6456518}
@@ -1645,7 +1678,7 @@ Transform:
   m_LocalScale: {x: 1.09, y: 1.1445, z: 1.09}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &509470815
 BoxCollider2D:
@@ -1926,10 +1959,12 @@ MonoBehaviour:
   gunRecoil: -20
   gunShakeAmpl: 0.1
   gunShakeDur: 1
+  fx: {fileID: 4140127748954673820, guid: c7c0dd71ee5806441ab9afe48459f111, type: 3}
   modeName: Laser
   bulletPrefab: {fileID: 5832668824721211837, guid: 1de004a848870104ea67537821a94f58, type: 3}
   recoilPoint: {fileID: 782948701}
   firePoint: {fileID: 1708581122}
+  fxPoint: {fileID: 136235900}
   parent: {fileID: 73195530}
   grenadeLauncher: 0
   bulletTimer: 0
@@ -1959,8 +1994,39 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1631394084}
   m_Father: {fileID: 970608961}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &598748082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 598748083}
+  m_Layer: 0
+  m_Name: FXPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &598748083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598748082}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 122740498}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &598825667
@@ -2177,13 +2243,45 @@ MonoBehaviour:
   gunRecoil: -200
   gunShakeAmpl: 5
   gunShakeDur: 0.1
+  fx: {fileID: 4140127748954673820, guid: c7c0dd71ee5806441ab9afe48459f111, type: 3}
   modeName: Machine Gun
   bulletPrefab: {fileID: 5832668824721211837, guid: ab2250d6e29a65248a47eb7f63ac3dfd, type: 3}
   recoilPoint: {fileID: 1292723962}
   firePoint: {fileID: 930643001}
+  fxPoint: {fileID: 1917046913}
   parent: {fileID: 73195530}
   grenadeLauncher: 0
   bulletTimer: 0
+--- !u!1 &608609443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 608609444}
+  m_Layer: 0
+  m_Name: FXPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &608609444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608609443}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 769570238}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &623373029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,10 +2332,12 @@ MonoBehaviour:
   gunRecoil: -100
   gunShakeAmpl: 2
   gunShakeDur: 0.1
+  fx: {fileID: 4140127748954673820, guid: c7c0dd71ee5806441ab9afe48459f111, type: 3}
   modeName: Assault Rifle
   bulletPrefab: {fileID: 5832668824721211837, guid: 54efc2d37ac1e9a4898feac99585942b, type: 3}
   recoilPoint: {fileID: 1105332759}
   firePoint: {fileID: 122740498}
+  fxPoint: {fileID: 598748083}
   parent: {fileID: 73195530}
   grenadeLauncher: 0
   bulletTimer: 0
@@ -3015,7 +3115,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 608609444}
   m_Father: {fileID: 1927969606}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3424,7 +3525,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1917046913}
   m_Father: {fileID: 602534288}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3530,10 +3632,12 @@ MonoBehaviour:
   gunRecoil: 0
   gunShakeAmpl: 0
   gunShakeDur: 0
+  fx: {fileID: 4140127748954673820, guid: c7c0dd71ee5806441ab9afe48459f111, type: 3}
   modeName: Grenade
   bulletPrefab: {fileID: 5832668824721211837, guid: 82f0ac9437a08d54eba2d98d6501416f, type: 3}
   recoilPoint: {fileID: 569062639}
   firePoint: {fileID: 569062639}
+  fxPoint: {fileID: 1631394084}
   parent: {fileID: 73195530}
   grenadeLauncher: 1
   bulletTimer: 0
@@ -9157,6 +9261,36 @@ Transform:
   m_Father: {fileID: 623373030}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1123415993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1123415994}
+  m_Layer: 0
+  m_Name: FXPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1123415994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123415993}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1421817367}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1130621185
 GameObject:
   m_ObjectHideFlags: 0
@@ -9989,7 +10123,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1123415994}
   m_Father: {fileID: 31296514}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10206,7 +10341,7 @@ Transform:
   m_LocalScale: {x: 2.1, y: 2.1, z: 2.1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1531680858 stripped
 Transform:
@@ -10497,6 +10632,36 @@ MonoBehaviour:
   m_AmplitudeGain: 0
   m_FrequencyGain: 1
   mNoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!1 &1631394083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1631394084}
+  m_Layer: 0
+  m_Name: FXPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1631394084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631394083}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 569062639}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1633935721
 GameObject:
   m_ObjectHideFlags: 0
@@ -15502,7 +15667,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 136235900}
   m_Father: {fileID: 567837349}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16147,7 +16313,7 @@ MonoBehaviour:
   boundaries: {x: 10, y: 10}
   gameController: {fileID: 0}
   waveDelay: 2
-  spawnDelay: 2
+  spawnDelay: 7.5
 --- !u!4 &1841223462
 Transform:
   m_ObjectHideFlags: 0
@@ -16356,6 +16522,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1917046912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1917046913}
+  m_Layer: 0
+  m_Name: FXPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1917046913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917046912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 930643001}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1927969605
 GameObject:
   m_ObjectHideFlags: 0
@@ -16406,10 +16602,12 @@ MonoBehaviour:
   gunRecoil: -200
   gunShakeAmpl: 20
   gunShakeDur: 0.1
+  fx: {fileID: 4140127748954673820, guid: c7c0dd71ee5806441ab9afe48459f111, type: 3}
   modeName: Sniper
   bulletPrefab: {fileID: 5832668824721211837, guid: 3a31b52b1e838ea4f8d1e59aa73c6482, type: 3}
   recoilPoint: {fileID: 2094192650}
   firePoint: {fileID: 769570238}
+  fxPoint: {fileID: 608609444}
   parent: {fileID: 73195530}
   grenadeLauncher: 0
   bulletTimer: 0
