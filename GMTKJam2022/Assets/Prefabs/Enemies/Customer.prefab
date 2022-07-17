@@ -108,7 +108,7 @@ RectTransform:
   m_Children:
   - {fileID: 3626089140616183239}
   m_Father: {fileID: 3945451954728520758}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -133,8 +133,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1623809019
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &8299087320605636943
 MonoBehaviour:
@@ -236,6 +236,7 @@ Transform:
   m_Children:
   - {fileID: 3945451956097383902}
   - {fileID: 3945451955013597953}
+  - {fileID: 530958085932524496}
   - {fileID: 4435292606368597972}
   - {fileID: 4778980319518053082}
   m_Father: {fileID: 0}
@@ -281,8 +282,8 @@ SpriteRenderer:
   m_SortingLayerID: 11418769
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 72f566e0fd2896744a83fb8c95b5ae7a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -306,18 +307,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3945451954728520757}
   sRend: {fileID: 3945451954728520745}
-  spriteObject: {fileID: 0}
+  gunRend: {fileID: 0}
+  spriteObject: {fileID: 3945451954728520744}
   deathSoundPlayer: {fileID: 0}
   healthBar: {fileID: 386822285379470907}
   enemyCanvas: {fileID: 8061447222688262824}
+  sideSprite: {fileID: 21300000, guid: 72f566e0fd2896744a83fb8c95b5ae7a, type: 3}
+  upSprite: {fileID: 21300000, guid: 501f09daed41d7442968f4d8194a3686, type: 3}
+  downSprite: {fileID: 21300000, guid: 72f566e0fd2896744a83fb8c95b5ae7a, type: 3}
+  hitSprite: {fileID: 21300000, guid: 36ab1f95ca63ae84e826ae86d86209fd, type: 3}
   health: 5
-  speed: 1
+  speed: 0.5
   recoverTime: 0.5
   attackRange: {fileID: 3945451956097383903}
   retreatRange: {fileID: 3945451955013597966}
   deathFX: {fileID: 7801313152169415637, guid: 65eeb793f53c02842ab5801b1b82fdfd, type: 3}
-  gun: {fileID: 6799134447209308865}
+  gun: {fileID: 628238401945088714}
   money: {fileID: 5305824317166724243, guid: c0fe3a5c55ff84d4fae2e7be0fce837d, type: 3}
+  firePoint: {fileID: 530958085932524496}
   moneyAmount: 3
   moneyDropRadius: 1
   deathSFX: []
@@ -338,7 +345,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.14, y: 2.87}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -497,7 +504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: -15, y: 175}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &386822285379470907
@@ -686,13 +693,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451904047627530857}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.7199998, y: 0.81999993, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
-  m_Father: {fileID: 4435292606368597972}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 3945451954728520758}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &5388928997024166996
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -734,7 +741,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -753,7 +760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4435292606368597972}
-  - component: {fileID: 6799134447209308865}
+  - component: {fileID: 628238401945088714}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -771,12 +778,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 530958085932524496}
+  m_Children: []
   m_Father: {fileID: 3945451954728520758}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6799134447209308865
+--- !u!114 &628238401945088714
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -785,7 +791,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8871556199344819821}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f47f563b274884488f20455ad6a66db, type: 3}
+  m_Script: {fileID: 11500000, guid: 952c8050cff31604a847b1cd2e4aa2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 1

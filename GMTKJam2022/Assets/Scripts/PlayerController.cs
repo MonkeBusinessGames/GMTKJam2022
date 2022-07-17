@@ -9,10 +9,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float health = 10f;
     [SerializeField] private Gun[] guns;
+    [SerializeField] private SpriteRenderer gunRend;
+    [SerializeField] private Transform firePoint;
     [SerializeField] private Rigidbody2D playerRb;
     [SerializeField] private SpriteRenderer sRend;
-    [SerializeField] private Sprite idleSprite;
-    [SerializeField] private Sprite moveSprite;
+    [SerializeField] private Sprite sideSprite;
+    [SerializeField] private Sprite upSprite;
+    [SerializeField] private Sprite downSprite;
     [SerializeField] private Sprite hitSprite;
     [SerializeField] private Camera cam;
     [SerializeField] private GameController gameController;
@@ -25,6 +28,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Image reloadUIII;
     public float bulletTimer;
     private bool damaged;
+    private float moveX;
+    private float moveY;
 
 
     public int money;
@@ -47,6 +52,9 @@ public class PlayerController : MonoBehaviour
         gunChangeRandom -= Time.deltaTime;
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         bulletTimer -= Time.deltaTime;
+
+        moveX = Input.GetAxis("Horizontal");
+        moveY = Input.GetAxis("Vertical");
         if (Input.GetMouseButton(0) && bulletTimer < 0)
         {
             guns[gunIndex].Shoot();
@@ -84,18 +92,79 @@ public class PlayerController : MonoBehaviour
     {
         if (damaged)
             return;
-        playerRb.velocity = new Vector2(getInput().x * speed, getInput().y * speed);
+        playerRb.velocity = new Vector2(moveX * speed, moveY * speed);
         Vector2 lookDir = mousePosition - playerRb.position;
-        playerRb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        if (playerRb.velocity.magnitude > 0)
-            sRend.sprite = moveSprite;
-        else
-            sRend.sprite = idleSprite;
+        float gunAngle = 0;
+        
+        //Right
+        if (lookDir.x > 0)
+        {
+            //Up and Right
+            if (lookDir.y > lookDir.x)
+            {
+                sRend.flipX = false;
+                gunRend.flipX = true;
+                firePoint.localPosition = new Vector2(1.9f, .6f);
+                sRend.sprite = upSprite;
+                transform.eulerAngles = Vector3.zero;
+            }
+            //Down and Right
+            else if ((lookDir.y * -1) > lookDir.x)
+            {
+                gunRend.sortingOrder = 5;
+                firePoint.localPosition = new Vector2(1.9f, .6f);
+                sRend.flipX = gunRend.flipX = true;
+                sRend.sprite = sideSprite;
+                transform.eulerAngles = new Vector3(0, 0, -20);
+            }
+            //Only Right
+            else
+            {
+                gunRend.sortingOrder = 5;
+                firePoint.localPosition = new Vector2(1.9f, .6f);
+                sRend.flipX = gunRend.flipX = true;
+                sRend.sprite = sideSprite;
+                transform.eulerAngles = Vector3.zero;
+            }
+        }
+        //Left
+        else if (lookDir.x < 0)
+        {
+            //Down and Left
+            if (lookDir.y < lookDir.x)
+            {
+                gunRend.sortingOrder = 3;
+                gunAngle = 180;
+                firePoint.localPosition = new Vector2(-2f, .6f);
+                sRend.flipX = gunRend.flipX = false;
+                sRend.sprite = sideSprite;
+                transform.eulerAngles = new Vector3(0, 0, 20);
 
-    }
-    private Vector2 getInput()
-    {
-        return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+            }
+            //Up and Left
+            else if ((lookDir.y * -1) < lookDir.x)
+            {
+                gunRend.sortingOrder = 3;
+                gunAngle = 180;
+                sRend.flipX = gunRend.flipX = false;
+                firePoint.localPosition = new Vector2(-2f, .6f);
+                sRend.sprite = upSprite;
+                transform.eulerAngles = Vector3.zero;
+            }
+            //Only Left
+            else
+            {
+                gunRend.sortingOrder = 5;
+                gunAngle = 180;
+                firePoint.localPosition = new Vector2(-2f, .6f);
+                sRend.flipX = gunRend.flipX = false;
+                sRend.sprite = sideSprite;
+                transform.eulerAngles = Vector3.zero;
+            }
+        }
+
+        gunRend.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + gunAngle);
+
     }
 
     public void Damaged(int damage)
@@ -106,7 +175,7 @@ public class PlayerController : MonoBehaviour
         //Cinemachine Shake
         StartCoroutine(CinemachineShake.Instance.ShakeCam(5f, .1f));
         sRend.sprite = hitSprite;
-        playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
+        //playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
         health -= damage;
         gameController.UpdateHealth(damage);
         if (health <= 0)
@@ -134,6 +203,7 @@ public class PlayerController : MonoBehaviour
         sRend.color = Color.white;
         print("recovered");
         damaged = false;
-        playerRb.constraints = RigidbodyConstraints2D.None;
+       // playerRb.constraints = RigidbodyConstraints2D.None;
+       // playerRb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }

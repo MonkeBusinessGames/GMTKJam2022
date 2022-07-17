@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3353904879651628429}
   m_Layer: 0
   m_Name: ShotgunDividedBullet
-  m_TagString: Untagged
+  m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,6 +139,7 @@ MonoBehaviour:
   speed: 15
   damage: 2
   spread: 20
+  direction: {x: 0, y: 0}
 --- !u!1 &8361620779704001820
 GameObject:
   m_ObjectHideFlags: 0
