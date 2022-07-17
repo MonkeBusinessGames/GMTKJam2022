@@ -21,6 +21,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private CircleCollider2D attackRange;
     [SerializeField] private CircleCollider2D retreatRange;
 
+    [Header("FX")]
+    [SerializeField] private GameObject deathFX;
+
     [SerializeField] private Gun gun;
     private float bulletTimer;
     private bool damaged;
@@ -163,6 +166,7 @@ public class EnemyController : MonoBehaviour
                 Instantiate(money, new Vector3(transform.position.x + Random.Range(-moneyDropRadius, moneyDropRadius), transform.position.y + Random.Range(-moneyDropRadius, moneyDropRadius), 0), Quaternion.identity);
             }
             Destroy(gameObject);
+            Instantiate(deathFX, transform.position, Quaternion.identity);
         }
 
         StartCoroutine(DamageWait());
