@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
             GunSoundManager.Instance.PlayGunSFX(gunIndex);
             bulletTimer = guns[gunIndex].fireRate;
         }
-        if(!Input.GetMouseButton(0) && GunSoundManager.Instance.machineGunSoundIsPlaying)
+        if(!Input.GetMouseButton(0) && GunSoundManager.Instance.gunLoopIsPlaying)
         {
             GunSoundManager.Instance.PlayGunTail();
         }

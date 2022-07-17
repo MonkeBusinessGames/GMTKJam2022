@@ -10,10 +10,13 @@ public class GunSoundManager : MonoBehaviour
     [SerializeField] private AudioClip sfx_machineGunLoop;
     [SerializeField] private AudioClip sfx_machineGunTail;
     [SerializeField] private AudioClip[] sfx_pistol;
+    [SerializeField] private AudioClip[] sfx_sniper;
+    [SerializeField] private AudioClip[] sfx_assaultRifle;
+    [SerializeField] private AudioClip[] sfx_shotgun;
 
     AudioSource player_audioSource;
 
-    public bool machineGunSoundIsPlaying;
+    public bool gunLoopIsPlaying;
 
     private void Awake()
     {
@@ -33,26 +36,29 @@ public class GunSoundManager : MonoBehaviour
 
     public void PlayGunSFX(int gunIndex)
     {
-        if (gunIndex != 0 && machineGunSoundIsPlaying)
+        if (gunIndex != 0 && gunLoopIsPlaying)
         {
             PlayGunTail();
         }
         switch (gunIndex)
         {
             case 0:
-                if(machineGunSoundIsPlaying == false)
+                if(gunLoopIsPlaying == false)
                 {
                     playGunLoop();
                 }
                 break;
             case 1:
+                //playGunshot(sfx_sniper);
                 break;
             case 2:
+                playGunshot(sfx_shotgun);
                 break;
             case 3:
                 playGunshot(sfx_pistol);
                 break;
             case 4:
+                playGunshot(sfx_assaultRifle);
                 break;
             case 5:
                 break;
@@ -66,7 +72,7 @@ public class GunSoundManager : MonoBehaviour
 
     public void playGunLoop()
     {
-        machineGunSoundIsPlaying = true;
+        gunLoopIsPlaying = true;
         player_audioSource.clip = sfx_machineGunLoop;
         player_audioSource.loop = true;
         player_audioSource.Play();
@@ -74,7 +80,7 @@ public class GunSoundManager : MonoBehaviour
 
     public void PlayGunTail()
     {
-        machineGunSoundIsPlaying=false;
+        gunLoopIsPlaying=false;
         player_audioSource.loop = false;
         player_audioSource.clip = sfx_machineGunTail;
         player_audioSource.PlayOneShot(sfx_machineGunTail, 0.5f);
