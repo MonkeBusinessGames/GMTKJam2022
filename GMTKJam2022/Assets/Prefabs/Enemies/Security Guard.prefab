@@ -280,9 +280,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 11418769
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: b1c06ed7f0ed04b45bae0886b54b2f0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -321,7 +321,6 @@ MonoBehaviour:
   gun: {fileID: 6799134447209308865}
   money: {fileID: 5305824317166724243, guid: c0fe3a5c55ff84d4fae2e7be0fce837d, type: 3}
   moneyAmount: 3
-  firePoint: {fileID: 530958085932524496}
   moneyDropRadius: 1
   deathSFX:
   - {fileID: 8300000, guid: b295f9ec85542b84683b19e9c93d633b, type: 3}
