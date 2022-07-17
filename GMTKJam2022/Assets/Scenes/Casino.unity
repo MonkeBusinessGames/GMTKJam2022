@@ -8017,6 +8017,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1289311133}
     - target: {fileID: 6556585992537488952, guid: a34dfb6b2edcc4546b85be025645ff72, type: 3}
+      propertyPath: hitSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 30f9edc7753f1324581dd8ce8f27d70b, type: 3}
+    - target: {fileID: 6556585992537488952, guid: a34dfb6b2edcc4546b85be025645ff72, type: 3}
+      propertyPath: idleSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eaa0fc48e153d14459638fe64d190d7c, type: 3}
+    - target: {fileID: 6556585992537488952, guid: a34dfb6b2edcc4546b85be025645ff72, type: 3}
+      propertyPath: moveSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 299bdaf9eb65780428a8d5f603805337, type: 3}
+    - target: {fileID: 6556585992537488952, guid: a34dfb6b2edcc4546b85be025645ff72, type: 3}
       propertyPath: gameController
       value: 
       objectReference: {fileID: 1309515172}
@@ -8095,6 +8107,26 @@ PrefabInstance:
     - target: {fileID: 6556585992537488955, guid: a34dfb6b2edcc4546b85be025645ff72, type: 3}
       propertyPath: m_Name
       value: Player(1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556585992537488956, guid: a34dfb6b2edcc4546b85be025645ff72, type: 3}
+      propertyPath: sfx_sniper.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556585992537488956, guid: a34dfb6b2edcc4546b85be025645ff72, type: 3}
+      propertyPath: sfx_shotgun.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6556585992537488956, guid: a34dfb6b2edcc4546b85be025645ff72, type: 3}
+      propertyPath: sfx_sniper.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d5f8eee3fd159547aad9a48a77d0c42, type: 3}
+    - target: {fileID: 6556585992537488956, guid: a34dfb6b2edcc4546b85be025645ff72, type: 3}
+      propertyPath: sfx_shotgun.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: b09c8e6068d112246859f2f0d53b4983, type: 3}
+    - target: {fileID: 6556585992537488956, guid: a34dfb6b2edcc4546b85be025645ff72, type: 3}
+      propertyPath: sfx_assaultRifle.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6556585992587018528, guid: a34dfb6b2edcc4546b85be025645ff72, type: 3}
       propertyPath: m_SortingLayer
