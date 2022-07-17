@@ -55,7 +55,7 @@ public class GunSoundManager : MonoBehaviour
                 playGunshot(sfx_shotgun);
                 break;
             case 3:
-                playGunshot(sfx_pistol);
+                //playGunshot(sfx_pistol);
                 break;
             case 4:
                 //playGunshot(sfx_assaultRifle);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int highestRandomTime = 20;
     [SerializeField] private int secondaryGunIndex;
     [SerializeField] private float recoverTime = .5f;
+    [SerializeField] private Image reloadUIII;
     public float bulletTimer;
     private bool damaged;
 
@@ -40,7 +42,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        gameController.reloadAmount = bulletTimer / guns[gunIndex].fireRate;
+        
+        reloadUIII.fillAmount = 1 - (bulletTimer/guns[gunIndex].fireRate);
         gunChangeRandom -= Time.deltaTime;
         mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         bulletTimer -= Time.deltaTime;
