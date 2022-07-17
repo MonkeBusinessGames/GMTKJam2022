@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1313722943078688286}
   - component: {fileID: 7749208171912892389}
-  - component: {fileID: 5334345332955802316}
-  - component: {fileID: 3704484598064739319}
   m_Layer: 0
   m_Name: casinoTable
   m_TagString: Untagged
@@ -86,38 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5334345332955802316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649094397234305299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c288a69ea46c2d498c6ac640079ba48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletTag: bullet
-  playerTag: Player
-  enemyString: Enemy
-  explosion: {fileID: 1810534012299922274, guid: 81e4a7e7f79641144a23b9135dca9a23, type: 3}
---- !u!70 &3704484598064739319
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649094397234305299}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.02258222, y: 0.05370643}
-  m_Size: {x: 0.80512464, y: 0.80512464}
-  m_Direction: 0
 --- !u!1 &3593665786823806797
 GameObject:
   m_ObjectHideFlags: 0
