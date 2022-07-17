@@ -102,7 +102,6 @@ public class PlayerController : MonoBehaviour
             //Up and Right
             if (lookDir.y > lookDir.x)
             {
-                gunRend.sortingOrder = 3;
                 sRend.flipX = false;
                 gunRend.flipX = true;
                 firePoint.localPosition = new Vector2(1.9f, .6f);
