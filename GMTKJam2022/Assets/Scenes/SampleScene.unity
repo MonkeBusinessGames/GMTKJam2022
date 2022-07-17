@@ -499,9 +499,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfx_machineGunLoop: {fileID: 8300000, guid: fb0d1918807580e45b918c6d8657f504, type: 3}
   sfx_machineGunTail: {fileID: 8300000, guid: 6c833fdb984691d4090b7623e24f6d07, type: 3}
-  sfx_pistol:
-  - {fileID: 8300000, guid: 4315c1a673a10674c89baf8ac29f95c5, type: 3}
-  - {fileID: 8300000, guid: 4ec82db127be9b14c915dad81e105582, type: 3}
+  sfx_laserGun:
+  - {fileID: 8300000, guid: 3df1015661dd6904cb90c7b48d766261, type: 3}
+  - {fileID: 8300000, guid: c75ad8a1c7b21154bb0d054db527f3fb, type: 3}
+  - {fileID: 8300000, guid: df15ec5ac6a11c74b8bf64d43b712d77, type: 3}
   sfx_shotgun:
   - {fileID: 8300000, guid: b09c8e6068d112246859f2f0d53b4983, type: 3}
   sfx_sniper:
@@ -2837,7 +2838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfx_machineGunLoop: {fileID: 8300000, guid: fb0d1918807580e45b918c6d8657f504, type: 3}
   sfx_machineGunTail: {fileID: 8300000, guid: 6c833fdb984691d4090b7623e24f6d07, type: 3}
-  sfx_pistol: []
+  sfx_laserGun: []
   sfx_shotgun:
   - {fileID: 8300000, guid: b09c8e6068d112246859f2f0d53b4983, type: 3}
   sfx_sniper:
