@@ -25,7 +25,7 @@ public class EnemyGun : MonoBehaviour
     {
         Vector3 moveDirection = parent.position - recoilPoint.position;
         parent.GetComponent<Rigidbody2D>().AddForce(moveDirection.normalized * -gunRecoil);
-        firePoint.localRotation = Quaternion.Euler(0, 0, firePoint.localRotation.z + Random.Range(-fireSpread, fireSpread)); 
+        //firePoint.localRotation = Quaternion.Euler(0, 0, firePoint.localRotation.z + Random.Range(-fireSpread, fireSpread)); 
         if (bulletTimer <= 0)
         {
             StartCoroutine(CinemachineShake.Instance.ShakeCam(gunShakeAmpl, gunShakeDur));
@@ -39,7 +39,6 @@ public class EnemyGun : MonoBehaviour
                 Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             }
         }
-        firePoint.localRotation = Quaternion.identity;
     }
 
     
