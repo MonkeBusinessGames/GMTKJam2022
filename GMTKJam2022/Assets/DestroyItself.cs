@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DestroyItself : MonoBehaviour
 {
-    public float timer;
+    public float timer = 2.5f;
+    // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, timer);
+            Destroy(gameObject, timer);
     }
 
-    
 }

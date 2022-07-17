@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - Coin
   - bullet
+  - Bullet
+  - collider
   layers:
   - Default
   - TransparentFX
