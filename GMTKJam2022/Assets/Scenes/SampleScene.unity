@@ -365,9 +365,9 @@ MonoBehaviour:
   - {fileID: 970608962}
   playerRb: {fileID: 73195532}
   sRend: {fileID: 73195529}
-  idleSprite: {fileID: 21300000, guid: eaa0fc48e153d14459638fe64d190d7c, type: 3}
-  moveSprite: {fileID: 21300000, guid: 299bdaf9eb65780428a8d5f603805337, type: 3}
-  hitSprite: {fileID: 21300000, guid: 30f9edc7753f1324581dd8ce8f27d70b, type: 3}
+  idleSprite: {fileID: 21300000, guid: 26c0f8ef1b6cd57479940625ba2ba999, type: 3}
+  moveSprite: {fileID: 21300000, guid: 7caae12b6ca4372488f86356a324c954, type: 3}
+  hitSprite: {fileID: 21300000, guid: 384e3d74fd666414090f4616a2b5b7ca, type: 3}
   cam: {fileID: 519420031}
   gameController: {fileID: 1157069530}
   gunIndex: 1
