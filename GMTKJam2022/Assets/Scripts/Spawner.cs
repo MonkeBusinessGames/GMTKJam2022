@@ -7,11 +7,11 @@ using UnityEngine;
 public class Wave
 {
     public GameObject[] enemies;
-    public Transform[] points;
 }
 
 public class Spawner : MonoBehaviour
 {
+    public Transform[] points;
     public Wave[] waves;
     public Vector2 boundaries;
     public GameController gameController;
@@ -43,9 +43,9 @@ public class Spawner : MonoBehaviour
         int e = waves[currentWave].enemies.Length-1;
         while (e >= 0)
         {
-            for(int p=0; p< waves[currentWave].points.Length; p++)
+            for(int p=0; p< points.Length; p++)
             {
-                Instantiate(waves[currentWave].enemies[e], waves[currentWave].points[p].position, Quaternion.identity);
+                Instantiate(waves[currentWave].enemies[e], points[p].position, Quaternion.identity);
                 e--;
                 if (e < 0)
                 {
