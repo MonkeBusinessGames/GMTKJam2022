@@ -9,10 +9,16 @@ public class EnemyController : MonoBehaviour
     private static BoxCollider2D player;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer sRend;
+    [SerializeField] private SpriteRenderer gunRend;
     [SerializeField] private GameObject spriteObject;
     [SerializeField] private GameObject deathSoundPlayer;
     [SerializeField] private Slider healthBar;
     [SerializeField] private Canvas enemyCanvas;
+
+    [SerializeField] private Sprite sideSprite;
+    [SerializeField] private Sprite upSprite;
+    [SerializeField] private Sprite downSprite;
+    [SerializeField] private Sprite hitSprite;
 
     [Header("Stats")]
     [SerializeField] private int health;
@@ -31,6 +37,7 @@ public class EnemyController : MonoBehaviour
     private bool damaged;
 
     [SerializeField] private GameObject money;
+    [SerializeField] private Transform firePoint;
     [SerializeField] private float moneyAmount;
     [SerializeField] private float moneyDropRadius;
 
@@ -146,26 +153,86 @@ public class EnemyController : MonoBehaviour
             //Move toward player
             case EnemyState.Chasing:
                 lookDir = (Vector2) player.transform.position - rb.position;
-                rb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+                //rb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
                 enemyCanvas.transform.rotation = Quaternion.identity;
                 transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.fixedDeltaTime);
                 break;
 
             case EnemyState.Shooting:
                 lookDir = (Vector2)player.transform.position - rb.position;
-                rb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+                //rb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
                 enemyCanvas.transform.rotation = Quaternion.identity;
                 break;
 
             //Move away from player
             case EnemyState.Retreating:
                 lookDir = (Vector2)player.transform.position - rb.position;
-                rb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 90f;
+                //rb.rotation = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 90f;
                 enemyCanvas.transform.rotation = Quaternion.identity;
                 transform.position = Vector2.MoveTowards(transform.position, player.transform.position, -speed * Time.fixedDeltaTime);
                 break;
 
         }
+
+        float gunAngle = 0;
+
+        //Right
+        if (lookDir.x > 0)
+        {
+            //Up and Right
+            if (lookDir.y > lookDir.x)
+            {
+                sRend.flipX = false;
+                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+                sRend.sprite = upSprite;
+                transform.eulerAngles = Vector3.zero;
+            }
+            //Down and Right
+            else if ((lookDir.y * -1) > lookDir.x)
+            {
+                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+                sRend.sprite = sideSprite;
+                transform.eulerAngles = new Vector3(0, 0, -20);
+            }
+            //Only Right
+            else
+            {
+                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+                sRend.sprite = sideSprite;
+                transform.eulerAngles = Vector3.zero;
+            }
+        }
+        //Left
+        else if (lookDir.x < 0)
+        {
+            //Down and Left
+            if (lookDir.y < lookDir.x)
+            {
+                gunAngle = 180;
+                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+                sRend.sprite = sideSprite;
+                transform.eulerAngles = new Vector3(0, 0, 20);
+
+            }
+            //Up and Left
+            else if ((lookDir.y * -1) < lookDir.x)
+            {
+                gunAngle = 180;
+                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+                sRend.sprite = upSprite;
+                transform.eulerAngles = Vector3.zero;
+            }
+            //Only Left
+            else
+            {
+                gunAngle = 180;
+                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+                sRend.sprite = sideSprite;
+                transform.eulerAngles = Vector3.zero;
+            }
+        }
+
+        transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + gunAngle);
     }
 
     public void Damaged(int damage)
