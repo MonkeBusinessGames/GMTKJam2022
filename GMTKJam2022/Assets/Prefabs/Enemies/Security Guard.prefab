@@ -201,7 +201,7 @@ MonoBehaviour:
   switchVisual: {fileID: 0}
   credit: {fileID: 0}
   creditHighscore: {fileID: 0}
-  reloadUI: {fileID: 0}
+  reloadImages: {fileID: 0}
   reloadAmount: 0
 --- !u!1 &3945451954728520744
 GameObject:
@@ -250,7 +250,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3945451954728520744}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -321,6 +321,7 @@ MonoBehaviour:
   gun: {fileID: 6799134447209308865}
   money: {fileID: 5305824317166724243, guid: c0fe3a5c55ff84d4fae2e7be0fce837d, type: 3}
   moneyAmount: 3
+  firePoint: {fileID: 530958085932524496}
   moneyDropRadius: 1
   deathSFX:
   - {fileID: 8300000, guid: b295f9ec85542b84683b19e9c93d633b, type: 3}
@@ -834,7 +835,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

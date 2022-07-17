@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject switchVisual;
     [SerializeField] private GameObject credit;
     [SerializeField] private TMP_Text creditHighscore;
-    [SerializeField] private Image reloadUI;
+    public Image reloadImages;
     [HideInInspector] public float reloadAmount;
 
     private bool paused = false;
@@ -35,10 +35,6 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (reloadAmount > 1) { reloadAmount = 1; }
-        reloadUI.fillAmount = 1-reloadAmount;
-/*        if (enemyCount <= 0)
-            GameOver();*/
 
         if (Input.GetButtonDown("Submit"))
             TogglePause();
