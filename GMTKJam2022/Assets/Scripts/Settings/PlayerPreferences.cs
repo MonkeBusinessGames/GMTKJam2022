@@ -8,7 +8,6 @@ public class PlayerPreferences : MonoBehaviour
     [SerializeField]
     Slider volumeSlider;
 
-    public AudioClip testSFX;
 
 
 
@@ -16,8 +15,6 @@ public class PlayerPreferences : MonoBehaviour
     void Start()
     {
         AudioListener.volume = PlayerPrefs.GetFloat("ListenerVolume");
-
-        GetComponent<AudioSource>().PlayOneShot(testSFX);
     }
 
     public void SetListenerVolumeValue()

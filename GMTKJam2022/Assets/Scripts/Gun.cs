@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+
+
+
     [Header("Gun Variables")]
     [SerializeField] public float fireRate;
     [SerializeField] private float fireSpread;
@@ -18,6 +21,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private bool grenadeLauncher=false;
     public float bulletTimer;
 
+
+    
 
     public void Shoot()
     {
@@ -37,4 +42,6 @@ public class Gun : MonoBehaviour
         }
         firePoint.localRotation = Quaternion.identity;
     }
+
+    
 }
