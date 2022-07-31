@@ -10,6 +10,10 @@ public class SoundManager : MonoBehaviour
     [Header("Sources")]
     [SerializeField] private AudioSource gunSource;
     [SerializeField] private AudioSource enemySource;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource musicAlternateSource;
+    [SerializeField] private AudioSource pauseMusicSource;
+    [SerializeField] private AudioSource endMusicSource;
 
     [Header("Gun SFX")]
     [SerializeField] private AudioClip sfx_machineGunLoop;
@@ -29,6 +33,11 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        InvokeRepeating("GameMusicSwap", 583, 583);
     }
 
     // Update is called once per frame
@@ -95,5 +104,35 @@ public class SoundManager : MonoBehaviour
     public void PlayEnemyDeath()
     {
         enemySource.PlayOneShot(sfx_EnemyDeath[Random.Range(0, 2)]);
+    }
+
+    private void GameMusicSwap()
+    {
+        if (musicSource.isPlaying)
+            musicAlternateSource.Play();
+        else
+            musicSource.Play();
+    }
+
+    public void PauseMusic(bool on)
+    {
+        if (on)
+        {
+            pauseMusicSource.Play();
+            musicSource.Pause();
+            musicAlternateSource.Pause();
+            return;
+        }
+            pauseMusicSource.Stop();
+            musicSource.UnPause();
+            musicAlternateSource.UnPause();
+    }
+
+
+    public void EndMusic()
+    {
+        endMusicSource.Play();
+        musicSource.Stop();
+        musicAlternateSource.Stop();
     }
 }

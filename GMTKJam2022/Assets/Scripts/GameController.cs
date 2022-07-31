@@ -54,6 +54,8 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
+
+        SoundManager.Instance.EndMusic();
         Time.timeScale = 0;
         if (newBest)
         {
@@ -68,7 +70,8 @@ public class GameController : MonoBehaviour
     }
     public void TogglePause()
     {
-        if(paused)
+        SoundManager.Instance.PauseMusic(!paused);
+        if (paused)
         {
             paused = false;
             Time.timeScale = 1;
@@ -83,7 +86,7 @@ public class GameController : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void UpdateHealth(float damageDealt)
@@ -180,7 +183,7 @@ public class GameController : MonoBehaviour
     public void MenuScene()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadSceneAsync(0);
     }
 
     IEnumerator StartWait()
