@@ -60,8 +60,6 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         healthBar.maxValue = healthBar.value = health;
-        
-        GameController.enemyCount++;
         player = FindObjectOfType<PlayerController>().GetComponent<BoxCollider2D>();
         state = EnemyState.Chasing;
         if(spriteObject != null)
@@ -247,7 +245,7 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             playDeathSound();
-            GameController.enemyCount--;
+            Spawner.enemyCount--;
             for(int i=0; i< moneyAmount; i++)
             {
                 Instantiate(money, new Vector3(transform.position.x + Random.Range(-moneyDropRadius, moneyDropRadius), transform.position.y + Random.Range(-moneyDropRadius, moneyDropRadius), 0), Quaternion.identity);

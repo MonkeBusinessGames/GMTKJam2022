@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 8061447222688262824}
   - component: {fileID: 8299087320605636943}
   - component: {fileID: 8590085884118915133}
-  - component: {fileID: 6954563020237906086}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -176,33 +175,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6954563020237906086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515151227966317745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04f9b4b908e3ed94694843a85cb9363c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverMenu: {fileID: 0}
-  gameOverMenuHighScore: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  healthBar: {fileID: 386822285379470907}
-  score: {fileID: 0}
-  finalScore: {fileID: 0}
-  newHighScore: {fileID: 0}
-  oldHighScore: {fileID: 0}
-  currentMode: {fileID: 0}
-  backupMode: {fileID: 0}
-  switchVisual: {fileID: 0}
-  credit: {fileID: 0}
-  creditHighscore: {fileID: 0}
-  reloadImages: {fileID: 0}
-  reloadAmount: 0
 --- !u!1 &3945451954728520744
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +289,7 @@ MonoBehaviour:
   downSprite: {fileID: 21300000, guid: bfb91536ee909144d8c4ff4f3cf17140, type: 3}
   hitSprite: {fileID: 21300000, guid: 0481b8307761fb24fa64f6d233f7f485, type: 3}
   health: 5
-  speed: 2
+  speed: 3
   recoverTime: 0.5
   attackRange: {fileID: 3945451956097383903}
   retreatRange: {fileID: 3945451955013597966}
@@ -327,7 +299,9 @@ MonoBehaviour:
   firePoint: {fileID: 530958085932524496}
   moneyAmount: 3
   moneyDropRadius: 1
-  deathSFX: []
+  deathSFX:
+  - {fileID: 8300000, guid: b295f9ec85542b84683b19e9c93d633b, type: 3}
+  - {fileID: 8300000, guid: 2d2b955cd94c3f24fa14ca4fdd1336b8, type: 3}
 --- !u!61 &3945451954728520759
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -794,13 +768,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c8050cff31604a847b1cd2e4aa2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1
-  fireSpread: 2
+  fireRate: 0.8
+  fireSpread: 4
   gunRecoil: 100
   gunShakeAmpl: 0
   gunShakeDur: 0
   modeName: 
-  bulletPrefab: {fileID: 5832668824721211837, guid: 8f59bf31ad93b354c82baba7a7fc62e3, type: 3}
+  bulletPrefab: {fileID: 5832668824721211837, guid: b91792e8961910d4e9657648b47feb01, type: 3}
   recoilPoint: {fileID: 530958085932524496}
   firePoint: {fileID: 530958085932524496}
   parent: {fileID: 3945451954728520758}

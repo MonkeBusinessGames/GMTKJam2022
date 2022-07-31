@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 8061447222688262824}
   - component: {fileID: 8299087320605636943}
   - component: {fileID: 8590085884118915133}
-  - component: {fileID: 6954563020237906086}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -176,33 +175,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6954563020237906086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515151227966317745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04f9b4b908e3ed94694843a85cb9363c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverMenu: {fileID: 0}
-  gameOverMenuHighScore: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  healthBar: {fileID: 386822285379470907}
-  score: {fileID: 0}
-  finalScore: {fileID: 0}
-  newHighScore: {fileID: 0}
-  oldHighScore: {fileID: 0}
-  currentMode: {fileID: 0}
-  backupMode: {fileID: 0}
-  switchVisual: {fileID: 0}
-  credit: {fileID: 0}
-  creditHighscore: {fileID: 0}
-  reloadImages: {fileID: 0}
-  reloadAmount: 0
 --- !u!1 &3945451954728520744
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,10 +280,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3945451954728520757}
   sRend: {fileID: 3945451954728520745}
+  gunRend: {fileID: 0}
   spriteObject: {fileID: 8714513900222295874}
   deathSoundPlayer: {fileID: 8447997788137012427, guid: 943c3443dffaee54d85e4dd279cf163e, type: 3}
   healthBar: {fileID: 386822285379470907}
   enemyCanvas: {fileID: 8061447222688262824}
+  sideSprite: {fileID: 0}
+  upSprite: {fileID: 0}
+  downSprite: {fileID: 0}
+  hitSprite: {fileID: 0}
   health: 10
   speed: 1
   recoverTime: 0.5
@@ -320,6 +297,7 @@ MonoBehaviour:
   deathFX: {fileID: 7801313152169415637, guid: 65eeb793f53c02842ab5801b1b82fdfd, type: 3}
   gun: {fileID: 7703633236620676072}
   money: {fileID: 5305824317166724243, guid: c0fe3a5c55ff84d4fae2e7be0fce837d, type: 3}
+  firePoint: {fileID: 0}
   moneyAmount: 3
   moneyDropRadius: 1
   deathSFX:
@@ -996,7 +974,7 @@ MonoBehaviour:
   gunShakeAmpl: 0
   gunShakeDur: 0
   modeName: 
-  bulletPrefab: {fileID: 5832668824721211837, guid: 8f59bf31ad93b354c82baba7a7fc62e3, type: 3}
+  bulletPrefab: {fileID: 5832668824721211837, guid: e36305a5a4098c94a9836261febff9b6, type: 3}
   recoilPoint: {fileID: 530958085932524496}
   firePoint: {fileID: 530958085932524496}
   parent: {fileID: 3945451954728520758}

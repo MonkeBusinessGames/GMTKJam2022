@@ -196,13 +196,11 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DamageWait()
     {
-        sRend.color = new Color(1, 1, 1, .9f);
+        sRend.color = new Color(1, 1, 1, .8f);
 
-        print("damaged");
         yield return new WaitForSeconds(recoverTime);
 
         sRend.color = Color.white;
-        print("recovered");
         damaged = false;
        // playerRb.constraints = RigidbodyConstraints2D.None;
        // playerRb.constraints = RigidbodyConstraints2D.FreezeRotation;

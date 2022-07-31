@@ -7,7 +7,6 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    public static int enemyCount = 0;
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject gameOverMenuHighScore;
     [SerializeField] private GameObject pauseMenu;
@@ -25,8 +24,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private Sprite machineGun;
     [SerializeField] private Sprite grenade;
     [SerializeField] private GameObject switchVisual;
-    [SerializeField] private GameObject credit;
-    [SerializeField] private TMP_Text creditHighscore;
     [SerializeField] private TMP_Text startText;
 
     private bool paused = false;
@@ -181,16 +178,11 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
-    public void RollCredits()
-    {
-        creditHighscore.text = "Best: $" + data.highScore.ToString();
-        credit.SetActive(true);
-    }
 
     IEnumerator StartWait()
     {
         Time.timeScale = 0;
-
+        print(gameObject.name);
         yield return new WaitForSecondsRealtime(1.5f);
         startText.gameObject.SetActive(true);
         startText.text = "GAMBLE GUN ACQUIRED";

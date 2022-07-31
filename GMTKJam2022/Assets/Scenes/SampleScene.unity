@@ -188,7 +188,7 @@ PrefabInstance:
       objectReference: {fileID: 848214840}
     - target: {fileID: 8263009033731153948, guid: 527c0d32150a89f47888daabbfe65823, type: 3}
       propertyPath: waves.Array.size
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8263009033731153948, guid: 527c0d32150a89f47888daabbfe65823, type: 3}
       propertyPath: waves.Array.data[5].points.Array.size
@@ -927,8 +927,8 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   gameController: {fileID: 848214840}
   gunIndex: 1
-  lowestRandomTime: 5
-  highestRandomTime: 20
+  lowestRandomTime: 3
+  highestRandomTime: 10
   secondaryGunIndex: 0
   recoverTime: 0.5
   reloadUIII: {fileID: 399366063}
