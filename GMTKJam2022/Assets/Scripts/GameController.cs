@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class GameController : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private Sprite grenade;
     [SerializeField] private GameObject switchVisual;
     [SerializeField] private TMP_Text startText;
+    [SerializeField] AudioMixer mixer;
+    [SerializeField] Slider volume;
 
     private bool paused = false;
     private SaveData data;
@@ -33,7 +36,8 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         data = SaveSystem.Load();
-
+        mixer.GetFloat("Volume", out float mixerValue);
+        volume.value = Mathf.Exp(mixerValue / 20);
     }
 
     private void Start()
@@ -182,7 +186,6 @@ public class GameController : MonoBehaviour
     IEnumerator StartWait()
     {
         Time.timeScale = 0;
-        print(gameObject.name);
         yield return new WaitForSecondsRealtime(1.5f);
         startText.gameObject.SetActive(true);
         startText.text = "GAMBLE GUN ACQUIRED";
@@ -203,5 +206,10 @@ public class GameController : MonoBehaviour
 
         startText.gameObject.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void SetVolume(float value)
+    {
+        mixer.SetFloat("Volume", Mathf.Log(value) * 20);
     }
 }

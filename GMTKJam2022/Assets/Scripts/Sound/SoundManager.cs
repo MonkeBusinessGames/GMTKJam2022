@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunSoundManager : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
-    public static GunSoundManager Instance;
+    public static SoundManager Instance;
 
-    [Header("Sound FX")]
+
+    [Header("Sources")]
+    [SerializeField] private AudioSource gunSource;
+    [SerializeField] private AudioSource enemySource;
+
+    [Header("Gun SFX")]
     [SerializeField] private AudioClip sfx_machineGunLoop;
     [SerializeField] private AudioClip sfx_machineGunTail;
     [SerializeField] private AudioClip[] sfx_laserGun;
@@ -15,18 +20,15 @@ public class GunSoundManager : MonoBehaviour
     [SerializeField] private AudioClip[] sfx_assaultRifle;
     [SerializeField] private AudioClip[] sfx_grenadeLauncher;
 
-    AudioSource player_audioSource;
+    [Header("Enemy SFX")]
+    [SerializeField] private AudioClip[] sfx_EnemyDeath;
+
 
     public bool gunLoopIsPlaying;
 
     private void Awake()
     {
         Instance = this;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        player_audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,45 +50,50 @@ public class GunSoundManager : MonoBehaviour
             case 0:
                 if(gunLoopIsPlaying == false)
                 {
-                    playGunLoop();
+                    PlayGunLoop();
                 }
                 break;
             case 1:
-                playGunshot(sfx_sniper);
+                PlayGunshot(sfx_sniper);
                 break;
             case 2:
-                playGunshot(sfx_shotgun);
+                PlayGunshot(sfx_shotgun);
                 break;
             case 3:
-                playGunshot(sfx_laserGun);
+                PlayGunshot(sfx_laserGun);
                 break;
             case 4:
-                playGunshot(sfx_assaultRifle);
+                PlayGunshot(sfx_assaultRifle);
                 break;
             case 5:
-                playGunshot(sfx_grenadeLauncher);
+                PlayGunshot(sfx_grenadeLauncher);
                 break;
         }
     }
 
-    private void playGunshot(AudioClip[] clips)
+    private void PlayGunshot(AudioClip[] clips)
     {
-        player_audioSource.PlayOneShot(clips[Random.Range(0, clips.Length)]);
+        gunSource.PlayOneShot(clips[Random.Range(0, clips.Length)]);
     }
 
-    public void playGunLoop()
+    public void PlayGunLoop()
     {
         gunLoopIsPlaying = true;
-        player_audioSource.clip = sfx_machineGunLoop;
-        player_audioSource.loop = true;
-        player_audioSource.Play();
+        gunSource.clip = sfx_machineGunLoop;
+        gunSource.loop = true;
+        gunSource.Play();
     }
 
     public void PlayGunTail()
     {
         gunLoopIsPlaying=false;
-        player_audioSource.loop = false;
-        player_audioSource.clip = sfx_machineGunTail;
-        player_audioSource.PlayOneShot(sfx_machineGunTail, 0.5f);
+        gunSource.loop = false;
+        gunSource.clip = sfx_machineGunTail;
+        gunSource.PlayOneShot(sfx_machineGunTail, 0.5f);
+    }
+
+    public void PlayEnemyDeath()
+    {
+        enemySource.PlayOneShot(sfx_EnemyDeath[Random.Range(0, 2)]);
     }
 }

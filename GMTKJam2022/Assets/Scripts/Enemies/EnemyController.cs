@@ -41,8 +41,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float moneyAmount;
     [SerializeField] private float moneyDropRadius;
 
-    [Header("Sound")]
-    [SerializeField] private AudioClip[] deathSFX;
     /*[Header("Gun Fields")]
     [SerializeField] private float fireRate;
     [SerializeField] private GameObject bulletPrefab;
@@ -244,7 +242,7 @@ public class EnemyController : MonoBehaviour
         sRend.sprite = hitSprite;
         if (health <= 0)
         {
-            playDeathSound();
+            SoundManager.Instance.PlayEnemyDeath();
             Spawner.enemyCount--;
             for(int i=0; i< moneyAmount; i++)
             {
@@ -279,16 +277,7 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(2f);
         animator.SetBool("isFiring", false);
     }
-
-    private void playDeathSound()
-    {
-        if(deathSoundPlayer!= null)
-        {
-            Vector2 spawnPos = transform.position;
-            GameObject obj = Instantiate(deathSoundPlayer, spawnPos, Quaternion.identity);
-            obj.GetComponent<DeathSoundPlayer>().PlaySound(deathSFX);
-        }
-    }
+    
 }
 
 

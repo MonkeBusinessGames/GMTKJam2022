@@ -299,9 +299,6 @@ MonoBehaviour:
   firePoint: {fileID: 530958085932524496}
   moneyAmount: 3
   moneyDropRadius: 1
-  deathSFX:
-  - {fileID: 8300000, guid: b295f9ec85542b84683b19e9c93d633b, type: 3}
-  - {fileID: 8300000, guid: 2d2b955cd94c3f24fa14ca4fdd1336b8, type: 3}
 --- !u!61 &3945451954728520759
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -395,7 +392,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 10
 --- !u!1 &3945451956097383889
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +439,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 7
+  m_Radius: 15
 --- !u!1 &5298556660183288136
 GameObject:
   m_ObjectHideFlags: 0

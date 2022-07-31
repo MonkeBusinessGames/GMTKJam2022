@@ -651,6 +651,7 @@ MonoBehaviour:
   controls: {fileID: 1806663401}
   credits: {fileID: 932501753}
   mixer: {fileID: 24100000, guid: 1dd69de756593ba41b9d2e5151a2ea7b, type: 2}
+  volume: {fileID: 1919970026}
 --- !u!114 &142611671
 MonoBehaviour:
   m_ObjectHideFlags: 0

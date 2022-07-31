@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [Range(1f, 10.0f)]
     [SerializeField] private float speed = 5f;
+    [SerializeField] private AudioSource coinSound;
     [SerializeField] private float health = 10f;
     [SerializeField] private Gun[] guns;
     [SerializeField] private SpriteRenderer gunRend;
@@ -58,12 +59,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0) && bulletTimer < 0)
         {
             guns[gunIndex].Shoot();
-            GunSoundManager.Instance.PlayGunSFX(gunIndex);
+            SoundManager.Instance.PlayGunSFX(gunIndex);
             bulletTimer = guns[gunIndex].fireRate;
         }
-        if(!Input.GetMouseButton(0) && GunSoundManager.Instance.gunLoopIsPlaying)
+        if(!Input.GetMouseButton(0) && SoundManager.Instance.gunLoopIsPlaying)
         {
-            GunSoundManager.Instance.PlayGunTail();
+            SoundManager.Instance.PlayGunTail();
         }
         /*else if (Input.GetMouseButtonDown(0) && bulletTimer < 0)
         {
@@ -190,6 +191,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             money++;
+            coinSound.Play();
             gameController.UpdateScore(money);
         }
     }
