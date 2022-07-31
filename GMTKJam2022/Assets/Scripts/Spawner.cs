@@ -14,6 +14,7 @@ public class Spawner : MonoBehaviour
 {
     public Wave[] waves;
     public Vector2 boundaries;
+    public GameController gameController;
     int currentWave=0;
     public float waveDelay=2f;
     public float spawnDelay = 2f;
@@ -23,10 +24,16 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies.Length == 0 && !spawn && currentWave < waves.Length)
+        if (enemies.Length == 0 && !spawn)
         {
-            Debug.Log("spawn");
-            StartCoroutine(Spawn());
+            if(currentWave < waves.Length)
+            {
+                StartCoroutine(Spawn());
+            }
+            else
+            {
+                StartCoroutine(Credits());
+            }
         }
     }
     private IEnumerator Spawn()
@@ -49,5 +56,10 @@ public class Spawner : MonoBehaviour
         }
         currentWave += 1;
         spawn = false;
+    }
+    private IEnumerator Credits()
+    {
+        yield return new WaitForSeconds(7.5f);
+        gameController.RollCredits();
     }
 }

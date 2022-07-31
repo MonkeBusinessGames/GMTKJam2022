@@ -10,9 +10,6 @@ public class GunSoundManager : MonoBehaviour
     [SerializeField] private AudioClip sfx_machineGunLoop;
     [SerializeField] private AudioClip sfx_machineGunTail;
     [SerializeField] private AudioClip[] sfx_pistol;
-    [SerializeField] private AudioClip[] sfx_sniper;
-    [SerializeField] private AudioClip[] sfx_assaultRifle;
-    [SerializeField] private AudioClip[] sfx_shotgun;
 
     AudioSource player_audioSource;
 
@@ -55,7 +52,7 @@ public class GunSoundManager : MonoBehaviour
                 playGunshot(sfx_shotgun);
                 break;
             case 3:
-                playGunshot(sfx_pistol);
+                playGunshot(sfx_laserGun);
                 break;
             case 4:
                 playGunshot(sfx_assaultRifle);

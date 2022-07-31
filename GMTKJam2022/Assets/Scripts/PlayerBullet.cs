@@ -10,7 +10,6 @@ public class PlayerBullet : MonoBehaviour
 
     private void Awake()
     {
-        GetComponent<Rigidbody2D>().AddForce(transform.up * speed, ForceMode2D.Impulse);
         StartCoroutine(WaitforDeath());
     }
 
@@ -28,7 +27,18 @@ public class PlayerBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.CompareTag("Wall"))
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
             Destroy(gameObject);
+        }
+
+    }
+
+    public void Shoot(Vector2 direction)
+    {
+        GetComponent<Rigidbody2D>().AddForce(direction * speed, ForceMode2D.Impulse);
     }
 }

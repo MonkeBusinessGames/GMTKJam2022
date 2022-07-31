@@ -8,12 +8,13 @@ public class ShotgunDividerBullet : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private int damage;
     [SerializeField] private int spread;
+    public Vector2 direction;
 
     private void Start()
     {
         StartCoroutine(WaitforDeath());
         transform.Rotate(0, 0, Random.Range(spread, -spread));
-        GetComponent<Rigidbody2D>().AddForce(transform.up * speed, ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(direction * speed, ForceMode2D.Impulse);
     }
 
     private IEnumerator WaitforDeath()

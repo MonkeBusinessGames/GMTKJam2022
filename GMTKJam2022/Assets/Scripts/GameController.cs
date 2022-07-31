@@ -16,21 +16,31 @@ public class GameController : MonoBehaviour
     [SerializeField] private TMP_Text finalScore;
     [SerializeField] private TMP_Text newHighScore;
     [SerializeField] private TMP_Text oldHighScore;
-    [SerializeField] private TMP_Text currentMode;
-    [SerializeField] private TMP_Text backupMode;
+    [SerializeField] private Image currentMode;
+    [SerializeField] private Image backupMode;
+    [SerializeField] private Sprite shotgun;
+    [SerializeField] private Sprite ar;
+    [SerializeField] private Sprite sniper;
+    [SerializeField] private Sprite laser;
+    [SerializeField] private Sprite machineGun;
+    [SerializeField] private Sprite grenade;
+    [SerializeField] private GameObject switchVisual;
+    [SerializeField] private GameObject credit;
+    [SerializeField] private TMP_Text creditHighscore;
+    public Image reloadImages;
+    [HideInInspector] public float reloadAmount;
+
     private bool paused = false;
     private SaveData data;
     private bool newBest = false;
 
-    private void Start()
+    private void Awake()
     {
         data = SaveSystem.Load();
     }
 
     private void Update()
     {
-/*        if (enemyCount <= 0)
-            GameOver();*/
 
         if (Input.GetButtonDown("Submit"))
             TogglePause();
@@ -67,7 +77,7 @@ public class GameController : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void UpdateHealth(float damageDealt)
@@ -84,19 +94,91 @@ public class GameController : MonoBehaviour
             newBest = true;
         }
     }
+    public IEnumerator ShowSwitchVisual()
+    {
+        switchVisual.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        switchVisual.SetActive(false);
+    }
 
     public void modeUpdate(string current, string backup)
     {
-        currentMode.text = current;
-        backupMode.text = backup;
+        switch (current)
+        {
+            case "Machine Gun":
+                currentMode.sprite = machineGun;
+                break;
+            case "Sniper":
+                currentMode.sprite = sniper;
+                break;
+            case "Shotgun":
+                currentMode.sprite = shotgun;
+                break;
+            case "Laser":
+                currentMode.sprite = laser;
+                break;
+            case "Grenade":
+                currentMode.sprite = grenade;
+                break;
+            case "Assault Rifle":
+                currentMode.sprite = ar;
+                break;
+        }
+
+        switch (backup)
+        {
+            case "Machine Gun":
+                backupMode.sprite = machineGun;
+                break;
+            case "Sniper":
+                backupMode.sprite = sniper;
+                break;
+            case "Shotgun":
+                backupMode.sprite = shotgun;
+                break;
+            case "Laser":
+                backupMode.sprite = laser;
+                break;
+            case "Grenade":
+                backupMode.sprite = grenade;
+                break;
+            case "Assault Rifle":
+                backupMode.sprite = ar;
+                break;
+        }
     }
     public void modeUpdate(string current)
     {
-        currentMode.text = current;
+        switch (current)
+        {
+            case "Machine Gun":
+                currentMode.sprite = machineGun;
+                break;
+            case "Sniper":
+                currentMode.sprite = sniper;
+                break;
+            case "Shotgun":
+                currentMode.sprite = shotgun;
+                break;
+            case "Laser":
+                currentMode.sprite = laser;
+                break;
+            case "Grenade":
+                currentMode.sprite = grenade;
+                break;
+            case "Assault Rifle":
+                currentMode.sprite = ar;
+                break;
+        }
     }
     public void MenuScene()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
+    }
+    public void RollCredits()
+    {
+        creditHighscore.text = "Best: $" + data.highScore.ToString();
+        credit.SetActive(true);
     }
 }

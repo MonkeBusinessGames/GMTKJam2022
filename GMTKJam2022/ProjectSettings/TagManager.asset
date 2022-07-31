@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Wall
+  - Coin
+  - bullet
+  - Bullet
+  - collider
   layers:
   - Default
   - TransparentFX
@@ -13,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - NonWallColl
+  - PostProcess
   - 
   - 
   - 
@@ -40,6 +44,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: back
+    uniqueID: 3133332239
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: normal
+    uniqueID: 11418769
+    locked: 0
+  - name: top
+    uniqueID: 3738490649
+    locked: 0
+  - name: top floor
+    uniqueID: 1623809019
     locked: 0
