@@ -27,8 +27,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject switchVisual;
     [SerializeField] private GameObject credit;
     [SerializeField] private TMP_Text creditHighscore;
-    public Image reloadImages;
-    [HideInInspector] public float reloadAmount;
+    [SerializeField] private TMP_Text startText;
 
     private bool paused = false;
     private SaveData data;
@@ -37,6 +36,12 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         data = SaveSystem.Load();
+
+    }
+
+    private void Start()
+    {
+        StartCoroutine(StartWait());
     }
 
     private void Update()
@@ -180,5 +185,31 @@ public class GameController : MonoBehaviour
     {
         creditHighscore.text = "Best: $" + data.highScore.ToString();
         credit.SetActive(true);
+    }
+
+    IEnumerator StartWait()
+    {
+        Time.timeScale = 0;
+
+        yield return new WaitForSecondsRealtime(1.5f);
+        startText.gameObject.SetActive(true);
+        startText.text = "GAMBLE GUN ACQUIRED";
+
+        yield return new WaitForSecondsRealtime(2.5f);
+
+        startText.text = "ENEMIES APPROACHING";
+
+        yield return new WaitForSecondsRealtime(2.5f);
+
+        startText.text = "TIME TO CASH IN";
+
+        yield return new WaitForSecondsRealtime(2.5f);
+
+        startText.text = "GO!";
+
+        yield return new WaitForSecondsRealtime(1.5f);
+
+        startText.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }

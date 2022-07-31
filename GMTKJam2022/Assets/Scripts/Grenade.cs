@@ -28,6 +28,7 @@ public class Grenade : MonoBehaviour
         }
         yield return new WaitForSeconds(timeToExplode);
         explosion.SetActive(true);
+        GetComponent<AudioSource>().Play();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for(int i=0; i<enemies.Length; i++)
         {

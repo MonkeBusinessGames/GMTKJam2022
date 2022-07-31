@@ -260,13 +260,8 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator DamageWait()
     {
-        //sRend.color = new Color(1, 0, 0, .5f);
-
-        print("damaged");
         yield return new WaitForSeconds(recoverTime);
 
-        //sRend.color = Color.red;
-        print("recovered");
         damaged = false;
         rb.constraints = RigidbodyConstraints2D.None;
     }

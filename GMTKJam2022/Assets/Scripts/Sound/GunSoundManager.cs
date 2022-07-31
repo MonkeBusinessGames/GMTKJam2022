@@ -9,7 +9,11 @@ public class GunSoundManager : MonoBehaviour
     [Header("Sound FX")]
     [SerializeField] private AudioClip sfx_machineGunLoop;
     [SerializeField] private AudioClip sfx_machineGunTail;
-    [SerializeField] private AudioClip[] sfx_pistol;
+    [SerializeField] private AudioClip[] sfx_laserGun;
+    [SerializeField] private AudioClip[] sfx_sniper;
+    [SerializeField] private AudioClip[] sfx_shotgun;
+    [SerializeField] private AudioClip[] sfx_assaultRifle;
+    [SerializeField] private AudioClip[] sfx_grenadeLauncher;
 
     AudioSource player_audioSource;
 
@@ -31,6 +35,8 @@ public class GunSoundManager : MonoBehaviour
         
     }
 
+    /// <summary>Play the sfx based on the given gun parameter</summary>
+    /// <param name="gunIndex">0-MG, 1-Sniper, 2-Shotgun, 3-Laser, 4-AR</param>
     public void PlayGunSFX(int gunIndex)
     {
         if (gunIndex != 0 && gunLoopIsPlaying)
@@ -58,6 +64,7 @@ public class GunSoundManager : MonoBehaviour
                 playGunshot(sfx_assaultRifle);
                 break;
             case 5:
+                playGunshot(sfx_grenadeLauncher);
                 break;
         }
     }

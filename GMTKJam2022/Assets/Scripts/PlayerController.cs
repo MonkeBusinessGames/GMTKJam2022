@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float recoverTime = .5f;
     [SerializeField] private Image reloadUIII;
     public float bulletTimer;
-    private bool damaged;
+    bool damaged;
     private float moveX;
     private float moveY;
 

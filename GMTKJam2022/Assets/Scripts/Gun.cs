@@ -10,9 +10,11 @@ public class Gun : MonoBehaviour
     [SerializeField] private float gunRecoil;
     [SerializeField] private float gunShakeAmpl;
     [SerializeField] private float gunShakeDur;
+    public float bulletTimer;
     public string modeName;
 
     [Header("Assignments")]
+    public Transform gun;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform recoilPoint;
     [SerializeField] private Transform firePoint;
@@ -21,8 +23,6 @@ public class Gun : MonoBehaviour
     [Header("Special Weapons")]
     [SerializeField] private bool grenadeLauncher = false;
     [SerializeField] private bool shotgun = false;
-    public Transform gun;
-    public float bulletTimer;
 
     public void Shoot()
     {
